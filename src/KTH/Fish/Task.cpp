@@ -30,117 +30,129 @@
 
 namespace KTH
 {
-  namespace Fish
-  {
-    using DUNE_NAMESPACES;
-
-    struct Task: public DUNE::Tasks::Task
+    namespace Fish
     {
-      IMC::RemoteSensorInfo remoteSensorInfo;
-      IMC::Announce announce;
-      IMC::SimulatedState m_esta;
-      IMC::GpsFix m_fix;
-      //! Constructor.
-      //! @param[in] name task name.
-      //! @param[in] ctx context.
-      Task(const std::string& name, Tasks::Context& ctx):
-        DUNE::Tasks::Task(name, ctx)
-      {
-        remoteSensorInfo.id = "fish_module";
-        remoteSensorInfo.sensor_class = "Sensor";
-        remoteSensorInfo.lat = Angles::radians(59.359644);
-        remoteSensorInfo.lon = Angles::radians(18.052664);
-        remoteSensorInfo.alt = 0;
-        remoteSensorInfo.heading = 0;
+        using DUNE_NAMESPACES;
 
-         announce.sys_name = "fish_module";
-         announce.sys_type = DUNE::IMC::SYSTEMTYPE_MOBILESENSOR;
-         announce.lat = remoteSensorInfo.lat;
-         announce.lon = remoteSensorInfo.lon;
-         announce.height = 0;
-         announce.setSource(0x9003);
-
-        bind<IMC::GpsFix>(this);
-        bind<IMC::SimulatedState>(this);
-      }
-
-
-      void consume(const IMC::GpsFix *fix){
-        std::cout << "Dummy fish got a fix!" << std::endl;
-
-        if (fix->getSource() != getSystemId())
+        struct Task: public DUNE::Tasks::Task
         {
-          std::cout << "Fummy fish task got GpsFix from wrong source." << std::endl;
-          return;
-        }
+            IMC::RemoteSensorInfo remoteSensorInfo;
+            IMC::Announce announce;
+            IMC::GpsFix m_fix;
+            //! Constructor.
+            //! @param[in] name task name.
+            //! @param[in] ctx context.
+            Task(const std::string& name, Tasks::Context& ctx):
+                    DUNE::Tasks::Task(name, ctx)
+            {
+                remoteSensorInfo.id = "fish_module";
+                remoteSensorInfo.sensor_class = "Sensor";
+                remoteSensorInfo.lat = Angles::radians(59.359267);
+                remoteSensorInfo.lon = Angles::radians(18.0525);
+                remoteSensorInfo.alt = 0;
+                remoteSensorInfo.heading = 0;
 
-        std::cout << "Fish dummy task got local fix." << std::endl;
-        m_fix = *fix;
-        remoteSensorInfo.lat = m_fix.lat;
-        remoteSensorInfo.lon = m_fix.lon;
-      }
+                announce.sys_name = "fish_module";
+                announce.sys_type = DUNE::IMC::SYSTEMTYPE_MOBILESENSOR;
+                announce.lat = remoteSensorInfo.lat;
+                announce.lon = remoteSensorInfo.lon;
+                announce.height = 0;
+                announce.setSource(0x9003);
 
-      void consume(const IMC::SimulatedState *esta) {
-        if (esta->getSource() != getSystemId())
-          {
-            std::cout << "Fummy fish task got SimulatedState from wrong source." << std::endl;
-            return;
-          }
+                bind<IMC::GpsFix>(this);
+                bind<IMC::SimulatedState>(this);
+                bind<IMC::EstimatedState>(this);
+            }
 
-        std::cout << "Fish dummy task got local SimulatedState." << std::endl;
-        remoteSensorInfo.lat = esta->lat;
-        remoteSensorInfo.lon = esta->lon;
-        m_esta = *esta;
-      }
 
-      //! Update internal state with new parameter values.
-      void
-      onUpdateParameters(void)
-      {
-      }
+            void consume(const IMC::GpsFix *fix){
+                std::cout << "Dummy fish got a fix!" << std::endl;
 
-      //! Reserve entity identifiers.
-      void
-      onEntityReservation(void)
-      {
-      }
+                if (fix->getSource() != getSystemId())
+                {
+                    std::cout << "Dummy fish task got GpsFix from wrong source." << std::endl;
+                    return;
+                }
 
-      //! Resolve entity names.
-      void
-      onEntityResolution(void)
-      {
-      }
+                std::cout << "Fish dummy task got local fix." << std::endl;
+                m_fix = *fix;
+                remoteSensorInfo.lat = m_fix.lat;
+                remoteSensorInfo.lon = m_fix.lon;
+            }
 
-      //! Acquire resources.
-      void
-      onResourceAcquisition(void)
-      {
-      }
+            void consume(const IMC::SimulatedState *esta) {
+                if (esta->getSource() != getSystemId())
+                {
+                    std::cout << "Dummy fish task got SimulatedState from wrong source." << std::endl;
+                    return;
+                }
 
-      //! Initialize resources.
-      void
-      onResourceInitialization(void)
-      {
-      }
+                std::cout << "Fish dummy task got local SimulatedState." << std::endl;
+                remoteSensorInfo.lat = esta->lat;
+                remoteSensorInfo.lon = esta->lon;
+            }
 
-      //! Release resources.
-      void
-      onResourceRelease(void)
-      {
-      }
+            void consume(const IMC::EstimatedState *esta) {
+                if (esta->getSource() != getSystemId())
+                {
+                    std::cout << "Dummy fish task got EstiamtedState from wrong source." << std::endl;
+                    return;
+                }
 
-      //! Main loop.
-      void
-      onMain(void)
-      {
-        while (!stopping())
-        {
-          dispatch(remoteSensorInfo);
-          Delay::wait(5.0);
-        }
-      }
-    };
-  }
+                std::cout << "Fish dummy task got local SimulatedState." << std::endl;
+                remoteSensorInfo.lat = esta->lat;
+                remoteSensorInfo.lon = esta->lon;
+            }
+
+            //! Update internal state with new parameter values.
+            void
+            onUpdateParameters(void)
+            {
+            }
+
+            //! Reserve entity identifiers.
+            void
+            onEntityReservation(void)
+            {
+            }
+
+            //! Resolve entity names.
+            void
+            onEntityResolution(void)
+            {
+            }
+
+            //! Acquire resources.
+            void
+            onResourceAcquisition(void)
+            {
+            }
+
+            //! Initialize resources.
+            void
+            onResourceInitialization(void)
+            {
+            }
+
+            //! Release resources.
+            void
+            onResourceRelease(void)
+            {
+            }
+
+            //! Main loop.
+            void
+            onMain(void)
+            {
+                while (!stopping())
+                {
+                    consumeMessages();
+                    dispatch(remoteSensorInfo);
+                    Delay::wait(5.0);
+                }
+            }
+        };
+    }
 }
 
 DUNE_TASK
