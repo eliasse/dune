@@ -1,5 +1,5 @@
 //***************************************************************************
-// Copyright 2007-2017 Universidade do Porto - Faculdade de Engenharia      *
+// Copyright 2007-2020 Universidade do Porto - Faculdade de Engenharia      *
 // Laboratório de Sistemas e Tecnologia Subaquática (LSTS)                  *
 //***************************************************************************
 // This file is part of DUNE: Unified Navigation Environment.               *
@@ -177,6 +177,20 @@ namespace DUNE
       }
 
       return rv;
+    }
+
+    std::string
+    String::replaceAll(const std::string& inStr, const std::string& searchStr, const std::string& replaceStr)
+    {
+      std::string result = inStr;
+      size_t pos = result.find(searchStr);
+      while (pos != std::string::npos)
+      {
+        result.replace(pos, searchStr.size(), replaceStr);
+        pos = result.find(searchStr, pos + searchStr.size());
+      }
+
+      return result;
     }
 
     void

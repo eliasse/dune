@@ -1,5 +1,5 @@
 //***************************************************************************
-// Copyright 2007-2017 Universidade do Porto - Faculdade de Engenharia      *
+// Copyright 2007-2020 Universidade do Porto - Faculdade de Engenharia      *
 // Laboratório de Sistemas e Tecnologia Subaquática (LSTS)                  *
 //***************************************************************************
 // This file is part of DUNE: Unified Navigation Environment.               *
@@ -249,6 +249,7 @@ namespace Plan
           pcontrol.request_id = 0;
           pcontrol.type = IMC::PlanControl::PC_REQUEST;
           pcontrol.op = IMC::PlanControl::PC_START;
+          pcontrol.setDestination(m_ctx.resolver.id());
           dispatch(pcontrol);
         }
 

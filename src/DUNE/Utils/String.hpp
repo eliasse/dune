@@ -1,5 +1,5 @@
 //***************************************************************************
-// Copyright 2007-2017 Universidade do Porto - Faculdade de Engenharia      *
+// Copyright 2007-2020 Universidade do Porto - Faculdade de Engenharia      *
 // Laboratório de Sistemas e Tecnologia Subaquática (LSTS)                  *
 //***************************************************************************
 // This file is part of DUNE: Unified Navigation Environment.               *
@@ -243,6 +243,14 @@ namespace DUNE
 
       static std::string
       replace(const std::string& str, char rep, const std::string& pat);
+
+      //! Replace all occurrences of a substring in a string
+      //! @param[in] inStr string.
+      //! @param[in] searchStr substring to search for.
+      //! @param[in] replaceStr substring replacement.
+      //! @return resulting string with all substring occurrences replaced.
+      static std::string
+      replaceAll(const std::string& inStr, const std::string& searchStr, const std::string& replaceStr);
 
       static std::string
       escape(const std::string& input);

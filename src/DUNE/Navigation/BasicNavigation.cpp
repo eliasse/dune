@@ -1,5 +1,5 @@
 //***************************************************************************
-// Copyright 2007-2017 Universidade do Porto - Faculdade de Engenharia      *
+// Copyright 2007-2020 Universidade do Porto - Faculdade de Engenharia      *
 // Laboratório de Sistemas e Tecnologia Subaquática (LSTS)                  *
 //***************************************************************************
 // This file is part of DUNE: Unified Navigation Environment.               *
@@ -82,7 +82,7 @@ namespace DUNE
       param("GPS timeout", m_without_gps_timeout)
       .units(Units::Second)
       .defaultValue("3.0")
-      .minimumValue("2.0")
+      .minimumValue("1.5")
       .description("No GPS readings timeout");
 
       param("DVL timeout", m_without_dvl_timeout)
@@ -346,7 +346,7 @@ namespace DUNE
           std::fabs(msg->y) > c_max_accel ||
           std::fabs(msg->z) > c_max_accel)
       {
-        war(DTR("received acceleration beyond range: %f, %f, %f"),
+        err(DTR("received acceleration beyond range: %f, %f, %f"),
             msg->x, msg->y, msg->z);
 
         return;

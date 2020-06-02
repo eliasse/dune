@@ -1,5 +1,5 @@
 //***************************************************************************
-// Copyright 2007-2017 Universidade do Porto - Faculdade de Engenharia      *
+// Copyright 2007-2020 Universidade do Porto - Faculdade de Engenharia      *
 // Laboratório de Sistemas e Tecnologia Subaquática (LSTS)                  *
 //***************************************************************************
 // This file is part of DUNE: Unified Navigation Environment.               *
@@ -608,6 +608,17 @@ namespace DUNE
                new Consumer<T, IMC::Message>(*task_obj, func));
       }
 
+      //! Register a consumer for a given message identifier.
+      //! @param[in] message_id message identifier.
+      //! @param[in] consumer consumer object.
+      void
+      bind(unsigned int message_id, AbstractConsumer* consumer)
+      {
+        spew("registering consumer for '%s'",
+             IMC::Factory::getAbbrevFromId(message_id).c_str());
+        m_recipient->bind(message_id, consumer);
+      }
+
       //! Request task to start/resume normal execution.
       void
       requestActivation(void);
@@ -808,17 +819,6 @@ namespace DUNE
 
       void
       run(void);
-
-      //! Register a consumer for a given message identifier.
-      //! @param[in] message_id message identifier.
-      //! @param[in] consumer consumer object.
-      void
-      bind(unsigned int message_id, AbstractConsumer* consumer)
-      {
-        spew("registering consumer for '%s'",
-             IMC::Factory::getAbbrevFromId(message_id).c_str());
-        m_recipient->bind(message_id, consumer);
-      }
 
       //! Consume QueryEntityState messages and reply accordingly.
       //! @param[in] msg QueryEntityState message.

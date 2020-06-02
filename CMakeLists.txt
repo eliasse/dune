@@ -1,5 +1,5 @@
 ############################################################################
-# Copyright 2007-2017 Universidade do Porto - Faculdade de Engenharia      #
+# Copyright 2007-2020 Universidade do Porto - Faculdade de Engenharia      #
 # Laboratório de Sistemas e Tecnologia Subaquática (LSTS)                  #
 ############################################################################
 # This file is part of DUNE: Unified Navigation Environment.               #
@@ -28,11 +28,16 @@
 ############################################################################
 
 # Validate CMake version.
-cmake_minimum_required(VERSION 2.6.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
 
 if(COMMAND CMAKE_POLICY)
   cmake_policy(SET CMP0003 NEW)
 endif(COMMAND CMAKE_POLICY)
+
+# Required C++ Standard.
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 include(cmake/Toolchain.cmake)
 
@@ -43,9 +48,9 @@ project("DUNE")
 set(PROJECT_NAME "DUNE: Unified Navigation Environment")
 set(PROJECT_SHORT_NAME "DUNE")
 set(PROJECT_VENDOR "Universidade do Porto - LSTS")
-set(PROJECT_COPYRIGHT "Copyright (C) 2007-2017 - ${PROJECT_VENDOR}")
+set(PROJECT_COPYRIGHT "Copyright (C) 2007-2020 - ${PROJECT_VENDOR}")
 set(PROJECT_CONTACT "DUNE <dune@lsts.pt>")
-set(PROJECT_VERSION_YEAR  "2017")
+set(PROJECT_VERSION_YEAR  "2020")
 set(PROJECT_VERSION_MONTH "01")
 set(PROJECT_VERSION_PATCH "0")
 set(PROJECT_VERSION_RCN   "0")
@@ -90,6 +95,8 @@ dune_option(BLUEVIEW "Enable support for the BlueView SDK")
 dune_option(OPENCV "Enable support for OpenCV")
 dune_option(NO_RTTI "Disable support for RTTI")
 dune_option(UEYE "Enable support for IDS uEye cameras")
+dune_option(H5CPP "Enable support for hdf5 format i/o using the h5cpp library")
+dune_option(ELLIPSOIDAL "Enable ellipsoidal coordinates in (WGS84) displace")
 
 # Internationalization.
 include(${PROJECT_SOURCE_DIR}/cmake/I18N.cmake)
@@ -230,6 +237,11 @@ else(DUNE_SHARED)
 endif(DUNE_SHARED)
 
 add_dependencies(dune-core dune-version)
+
+# WGS84 Coordinate Type
+if(ELLIPSOIDAL)
+  add_definitions(-DDUNE_ELLIPSOIDAL_DISPLACE)
+endif(ELLIPSOIDAL)
 
 ##########################################################################
 #                          Tasks                                         #

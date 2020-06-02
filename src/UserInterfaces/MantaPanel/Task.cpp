@@ -1,5 +1,5 @@
 //***************************************************************************
-// Copyright 2007-2017 Universidade do Porto - Faculdade de Engenharia      *
+// Copyright 2007-2020 Universidade do Porto - Faculdade de Engenharia      *
 // Laboratório de Sistemas e Tecnologia Subaquática (LSTS)                  *
 //***************************************************************************
 // This file is part of DUNE: Unified Navigation Environment.               *
@@ -83,6 +83,8 @@ namespace UserInterfaces
       std::vector<std::string> sys_addr_sections;
       //! Set of excluded systems.
       std::vector<std::string> sys_exclude;
+      //! Reply to AcousticSystemsQuery requests
+      bool reply_asq;
     };
 
     struct Task: public Tasks::Task
@@ -107,6 +109,8 @@ namespace UserInterfaces
       Command* m_cmd;
       //! Time of last acoustic operation dispatch.
       double m_last_acop;
+      //! Sequence number.
+      uint16_t m_reqid;
       //! Progress bar.
       unsigned m_prog_bar;
 
@@ -117,6 +121,7 @@ namespace UserInterfaces
         m_power_down_now(false),
         m_cmd(0),
         m_last_acop(-1.0),
+        m_reqid(0),
         m_prog_bar(0)
       {
         // Define configuration parameters.
@@ -164,11 +169,15 @@ namespace UserInterfaces
         .defaultValue("broadcast")
         .description("List of excluded systems");
 
+        param("Reply to System Queries", m_args.reply_asq)
+        .defaultValue("false");
+
         // Register listeners.
         bind<IMC::ButtonEvent>(this);
         bind<IMC::AcousticOperation>(this);
         bind<IMC::AcousticSystemsQuery>(this);
         bind<IMC::PowerOperation>(this);
+        bind<IMC::TransmissionStatus>(this);
         bind<IMC::Abort>(this);
       }
 
@@ -250,22 +259,42 @@ namespace UserInterfaces
       void
       requestAbort(const std::string& sys)
       {
-        IMC::AcousticOperation acop;
-        acop.setDestination(getSystemId());
-        acop.system = sys;
-        acop.op = IMC::AcousticOperation::AOP_ABORT;
-        dispatch(&acop, DF_LOOP_BACK);
+        sendMessage(sys, IMC::TransmissionRequest::DMODE_ABORT);
+        abortSystem(sys);
       }
 
       void
       requestPing(const std::string& sys)
       {
-        IMC::AcousticOperation acop;
-        acop.setDestination(getSystemId());
-        acop.system = sys;
-        acop.op = IMC::AcousticOperation::AOP_RANGE;
-        dispatch(&acop, DF_LOOP_BACK);
+        sendMessage(sys, IMC::TransmissionRequest::DMODE_RANGE);
+        pingSystem(sys);
       }
+
+      void
+      sendMessage(const std::string& sys, int code){
+        IMC::TransmissionRequest tr;
+        tr.setDestination(getSystemId());
+        tr.destination     = sys;
+        tr.deadline =  Time::Clock::getSinceEpoch() + 10;
+        tr.req_id          = createInternalId();
+        tr.comm_mean       = IMC::TransmissionRequest::CMEAN_ACOUSTIC;
+        tr.data_mode       = code;
+
+        dispatch(&tr, DF_LOOP_BACK);
+
+      }
+
+      uint16_t
+      createInternalId(){
+        if(m_reqid==0xFFFF){
+          m_reqid=0;
+        }
+        else{
+          m_reqid++;
+        }
+        return m_reqid;
+      }
+
 
       void
       consume(const IMC::Abort* msg)
@@ -276,7 +305,8 @@ namespace UserInterfaces
       void
       consume(const IMC::AcousticSystemsQuery* msg)
       {
-        dispatchReply(*msg, m_acoustic_systems);
+        if (m_args.reply_asq)
+          dispatchReply(*msg, m_acoustic_systems);
       }
 
       void
@@ -318,6 +348,49 @@ namespace UserInterfaces
 
           selectSystem(false);
         }
+      }
+
+      void
+      consume(const IMC::TransmissionStatus* msg)
+      {
+
+        if(msg->getDestination() != getSystemId()) return;
+        if(msg->getDestinationEntity() != getEntityId()) return;
+
+        m_lcd.op = IMC::LcdControl::OP_WRITE1;
+
+        switch (msg->status)
+        {
+          case IMC::TransmissionStatus::TSTAT_TEMPORARY_FAILURE:
+            m_lcd.text = fill("Timeout");
+            reset();
+            break;
+
+          case IMC::TransmissionStatus::TSTAT_RANGE_RECEIVED:
+            m_lcd.text = fill(String::str("Range %0.1fm", msg->range));
+            reset();
+            break;
+
+          case IMC::TransmissionStatus::TSTAT_SENT:
+            m_lcd.text = fill("Aborted!");
+            reset();
+            break;
+
+          case IMC::TransmissionStatus::TSTAT_INPUT_FAILURE:
+            m_lcd.text = fill("Not Supported");
+            reset();
+            break;
+
+          case IMC::TransmissionStatus::TSTAT_PERMANENT_FAILURE:
+            m_lcd.text = fill("No Transducer");
+            reset();
+            break;
+
+          default:
+            return;
+        }
+
+        dispatch(m_lcd);
       }
 
       void

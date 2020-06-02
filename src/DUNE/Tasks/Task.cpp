@@ -1,5 +1,5 @@
 //***************************************************************************
-// Copyright 2007-2017 Universidade do Porto - Faculdade de Engenharia      *
+// Copyright 2007-2020 Universidade do Porto - Faculdade de Engenharia      *
 // Laboratório de Sistemas e Tecnologia Subaquática (LSTS)                  *
 //***************************************************************************
 // This file is part of DUNE: Unified Navigation Environment.               *
@@ -274,9 +274,8 @@ namespace DUNE
     Task::requestActivation(void)
     {
       spew("request activation");
-      m_entity->requestActivation();
 
-      if (m_entity->isActivating())
+      if (m_entity->requestActivation())
       {
         spew("calling on request activation");
         onRequestActivation();
@@ -314,9 +313,8 @@ namespace DUNE
     Task::requestDeactivation(void)
     {
       spew("request deactivation");
-      m_entity->requestDeactivation();
 
-      if (m_entity->isDeactivating())
+      if (m_entity->requestDeactivation())
       {
         spew("calling on request deactivation");
         onRequestDeactivation();
@@ -483,6 +481,7 @@ namespace DUNE
         try
         {
           m_params.set((*itr)->name, (*itr)->value);
+          m_ctx.config.set(getName(), (*itr)->name, (*itr)->value);
         }
         catch (std::runtime_error& e)
         {
@@ -709,7 +708,14 @@ namespace DUNE
           err(DTR("invalid parameter '%s'"), pitr->first.c_str());
       }
 
-      updateParameters(false);
+      try
+      {
+        updateParameters(false);
+      }
+      catch (RestartNeeded& e)
+      {
+        err(DTR("unable to load parameters: %s"), e.getError());
+      }
     }
   }
 }

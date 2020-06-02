@@ -1,5 +1,5 @@
 //***************************************************************************
-// Copyright 2007-2017 Universidade do Porto - Faculdade de Engenharia      *
+// Copyright 2007-2020 Universidade do Porto - Faculdade de Engenharia      *
 // Laboratório de Sistemas e Tecnologia Subaquática (LSTS)                  *
 //***************************************************************************
 // This file is part of DUNE: Unified Navigation Environment.               *
@@ -455,7 +455,10 @@ namespace Sensors
           consumeMessages();
 
           if (m_wdog.overflow())
+          {
             setEntityState(IMC::EntityState::ESTA_ERROR, Status::CODE_COM_ERROR);
+            err("%s", DTR(Status::getString(Status::CODE_COM_ERROR)));
+          }
 
           if (!Poll::poll(*m_uart, 1.0))
             continue;

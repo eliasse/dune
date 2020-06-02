@@ -1,5 +1,5 @@
 //***************************************************************************
-// Copyright 2007-2017 Universidade do Porto - Faculdade de Engenharia      *
+// Copyright 2007-2020 Universidade do Porto - Faculdade de Engenharia      *
 // Laboratório de Sistemas e Tecnologia Subaquática (LSTS)                  *
 //***************************************************************************
 // This file is part of DUNE: Unified Navigation Environment.               *
@@ -108,6 +108,8 @@ namespace Sensors
       std::string m_init_line;
       //! Reader thread.
       Reader* m_reader;
+      //! Buffer forEntityState
+      char m_bufer_entity[64];
 
       Task(const std::string& name, Tasks::Context& ctx):
         Tasks::Task(name, ctx),
@@ -426,7 +428,17 @@ namespace Sensors
         // Validate checksum.
         unsigned rcsum = 0;
         if (std::sscanf(&line[0] + eidx + 1, "%02X", &rcsum) != 1)
+        {
+          trace("No checksum found, will not parse sentence.");
           return;
+        }
+
+        if (ccsum != rcsum)
+        {
+          trace("Checksum field does not match computed checksum, will not "
+                "parse sentence.");
+          return;
+        }
 
         // Split sentence
         std::vector<std::string> parts;
@@ -501,10 +513,17 @@ namespace Sensors
             m_has_agvel = false;
           }
 
+          std::memset(&m_bufer_entity, '\0', sizeof(m_bufer_entity));
           if (m_fix.validity & IMC::GpsFix::GFV_VALID_POS)
-            setEntityState(IMC::EntityState::ESTA_NORMAL, Status::CODE_ACTIVE);
+          {
+            std::sprintf(m_bufer_entity, "active - hdop: %.2f , Sat: %d", m_fix.hdop, m_fix.satellites);
+            setEntityState(IMC::EntityState::ESTA_NORMAL, Utils::String::str(DTR(m_bufer_entity)));
+          }
           else
-            setEntityState(IMC::EntityState::ESTA_NORMAL, Status::CODE_WAIT_GPS_FIX);
+          {
+            std::sprintf(m_bufer_entity, "wait gps fix - hdop: %.2f , Sat: %d", m_fix.hdop, m_fix.satellites);
+            setEntityState(IMC::EntityState::ESTA_NORMAL, Utils::String::str(DTR(m_bufer_entity)));
+          }
         }
       }
 

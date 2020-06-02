@@ -1,5 +1,5 @@
 //***************************************************************************
-// Copyright 2007-2016 Universidade do Porto - Faculdade de Engenharia      *
+// Copyright 2007-2020 Universidade do Porto - Faculdade de Engenharia      *
 // Laboratório de Sistemas e Tecnologia Subaquática (LSTS)                  *
 //***************************************************************************
 // This file is part of DUNE: Unified Navigation Environment.               *
@@ -47,9 +47,11 @@ namespace Sensors
     static const fp64_t c_euler_factor = (360.0 / 65536.0);
     //! Number of axis.
     static const uint8_t c_number_axis = 3;
-//! Hard Iron calibration parameter name.
+    //! Hard Iron calibration parameter name.
     static const std::string c_hard_iron_param = "Hard-Iron Calibration";
-        //! Time to wait for soft-reset.
+    //! Hard Iron calibration date.
+    static const std::string c_calib_time_param = "Last Calibration Time";
+    //! Time to wait for soft-reset.
     static const float c_reset_tout = 5.0;
 
     //todo adicionar matriz de rotação
@@ -96,6 +98,8 @@ namespace Sensors
       std::vector<float> hard_iron;
       //! Calibration threshold.
       double calib_threshold;
+      //! Calibration time stamp
+      std::string calib_time;
     };
 
     struct Task: public DUNE::Tasks::Task
@@ -179,6 +183,11 @@ namespace Sensors
         .minimumValue("0.0")
         .description("Minimum magnetic field calibration values to reset hard iron parameters");
 
+        param(c_calib_time_param, m_args.calib_time)
+        .description("Date of last successful calibration")
+        .visibility(Tasks::Parameter::VISIBILITY_USER)
+        .defaultValue("N/A");
+
         bind<IMC::MagneticField>(this);
       }
 
@@ -233,9 +242,16 @@ namespace Sensors
         hip.name = c_hard_iron_param;
         hip.value = String::str("%f, %f, 0.0", hi_x, hi_y);
 
+        IMC::EntityParameter calt;
+        Time::BrokenDown bdt(Time::Clock::getSinceEpochMsec() / 1000);
+        calt.name = c_calib_time_param;
+        calt.value = String::str("%04u-%02u-%02u %02u:%02u", bdt.year, bdt.month,
+                                bdt.day, bdt.hour, bdt.minutes);
+
         IMC::SetEntityParameters np;
         np.name = getEntityLabel();
         np.params.push_back(hip);
+        np.params.push_back(calt);
         dispatch(np, DF_LOOP_BACK);
 
         IMC::SaveEntityParameters sp;

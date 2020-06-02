@@ -1,5 +1,5 @@
 //***************************************************************************
-// Copyright 2007-2017 Universidade do Porto - Faculdade de Engenharia      *
+// Copyright 2007-2020 Universidade do Porto - Faculdade de Engenharia      *
 // Laboratório de Sistemas e Tecnologia Subaquática (LSTS)                  *
 //***************************************************************************
 // This file is part of DUNE: Unified Navigation Environment.               *
@@ -47,6 +47,8 @@ namespace Sensors
     static const double c_power_up_delay = 2.0;
     //! Hard Iron calibration parameter name.
     static const std::string c_hard_iron_param = "Hard-Iron Calibration";
+    //! Hard Iron calibration date.
+    static const std::string c_calib_time_param = "Last Calibration Time";
 
     //! Packet identifiers.
     enum PacketIds
@@ -83,6 +85,8 @@ namespace Sensors
       //! Number of seconds without data before
       //! reporting a failure and restarting.
       double timeout_failure;
+      //! Calibration time stamp
+      std::string calib_time;
     };
 
     struct Task: public Tasks::Task
@@ -183,6 +187,11 @@ namespace Sensors
         .units(Units::Second)
         .description("Number of seconds without data before restarting task");
 
+        param(c_calib_time_param, m_args.calib_time)
+        .description("Date of last successful calibration")
+        .visibility(Tasks::Parameter::VISIBILITY_USER)
+        .defaultValue("N/A");
+
         bind<IMC::MagneticField>(this);
       }
 
@@ -269,9 +278,16 @@ namespace Sensors
         hip.name = c_hard_iron_param;
         hip.value = String::str("%.4f, %.4f, 0.0", hi_x, hi_y);
 
+        IMC::EntityParameter calt;
+        Time::BrokenDown bdt(Time::Clock::getSinceEpochMsec() / 1000);
+        calt.name = c_calib_time_param;
+        calt.value = String::str("%04u-%02u-%02u %02u:%02u", bdt.year, bdt.month,
+                                 bdt.day, bdt.hour, bdt.minutes);
+
         IMC::SetEntityParameters np;
         np.name = getEntityLabel();
         np.params.push_back(hip);
+        np.params.push_back(calt);
         dispatch(np, DF_LOOP_BACK);
 
         IMC::SaveEntityParameters sp;

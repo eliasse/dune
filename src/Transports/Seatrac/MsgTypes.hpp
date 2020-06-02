@@ -1,5 +1,5 @@
 //***************************************************************************
-// Copyright 2007-2015 Universidade do Porto - Faculdade de Engenharia      *
+// Copyright 2007-2020 Universidade do Porto - Faculdade de Engenharia      *
 // Laboratório de Sistemas e Tecnologia Subaquática (LSTS)                  *
 //***************************************************************************
 // This file is part of DUNE: Unified Navigation Environment.               *
@@ -57,8 +57,8 @@ namespace Transports
       uint16_t environment_supply;
       int16_t  environment_temperature;
       int32_t  environment_pressure;
-      int32_t  EnvironmentDepth;
-      uint16_t EnvironmentVos;
+      int32_t  environment_depth;
+      uint16_t environment_vos;
       // Attitude.
       int16_t attitude_yaw;
       int16_t attitude_pitch;
