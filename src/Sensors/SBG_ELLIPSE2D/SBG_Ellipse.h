@@ -10,12 +10,27 @@
 #include "stdint.h"
 #include "Stream.h"
 
+enum SBG_DATA {
+  NOT_IMPLEMENTED,
+  UTC_TIME_DATA,
+  IMU_DATA,
+  MAGNETOMETER_DATA,
+  EKF_EULER_DATA,
+  EKF_QUAT_DATA,
+  EKF_NAV_POS_VEL_DATA,
+  SHIP_MOTION_DATA,
+  GPS_VEL_DATA,
+  GPS_POS_DATA,
+  GPS_TRUE_HEADING_DATA
+};
+
   class SBG_Ellipse
   {
   //----------------------------------------------------------------------
   // PUBLIC AND PRIVATE VARIABLE/PARAMETERS
   //----------------------------------------------------------------------
   public:
+
     struct SBG_ECOM_LOG_STATUS
     {
       uint32_t time_stamp, comStatus, aidingStatus, upTimeSec;
@@ -169,7 +184,7 @@
   public:
   	SBG_Ellipse(); // Empty constructor
   	void begin(Stream *SerialPort);
-    void ReadData();
+    SBG_DATA ReadData();
 
     void GET_MOTION_PROFILE_ID();
     void SET_MOTION_PROFILE_ID(uint8_t ID);
@@ -197,7 +212,7 @@
 
   private:
     uint16_t CRCcheck();
-    void AllocationData(uint8_t MSG, uint8_t CLASS, uint8_t DATA[]);
+    SBG_DATA AllocationData(uint8_t MSG, uint8_t CLASS, uint8_t DATA[]);
     uint8_t *ParseArray(int offset,int length,uint8_t Array[]);
     float ByteToFloat(int a, int b, uint8_t DATA[]);
     void WriteFrame();

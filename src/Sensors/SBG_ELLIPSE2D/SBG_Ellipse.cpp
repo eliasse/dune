@@ -16,9 +16,9 @@ void SBG_Ellipse::begin(Stream *SerialPort)
   port = SerialPort;
 }
 //----------------------------------------------------------------------
-void SBG_Ellipse::ReadData()
+SBG_DATA SBG_Ellipse::ReadData()
 {
-
+    SBG_DATA ret = NOT_IMPLEMENTED; //TODO change name to something better.
     if (port -> available())
     {
         if (counter >=255){                            // max boundary
@@ -27,7 +27,7 @@ void SBG_Ellipse::ReadData()
         }
 
         BufferData[counter] = port -> read();
-        std::cout << "SBG sent: " << (int)BufferData[counter]  << std::endl;
+        //std::cout << "SBG sent: " << (int)BufferData[counter]  << std::endl;
 
         if (ctr == 1)
         {
@@ -53,8 +53,8 @@ void SBG_Ellipse::ReadData()
                 crc = CRCcheck();
 
                 if (crc == CRCInt){                     // check if message is ok
-                    AllocationData(MSG,CLASS,DATA);
-                    std::cout << "SBG data received" << std::endl;
+                    ret = AllocationData(MSG,CLASS,DATA);
+                    //std::cout << "SBG data received" << std::endl;
                 }
 
                 ctr = 0;
@@ -78,6 +78,7 @@ void SBG_Ellipse::ReadData()
 
         counter = counter + 1;
     }
+    return ret;
 }
 //----------------------------------------------------------------------
 uint16_t SBG_Ellipse::CRCcheck()

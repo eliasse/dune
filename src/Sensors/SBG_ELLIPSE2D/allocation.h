@@ -3,7 +3,7 @@
 
 long lastMicros;
 
-void SBG_Ellipse::AllocationData(uint8_t MSG, uint8_t CLASS,uint8_t DATA[])
+SBG_DATA SBG_Ellipse::AllocationData(uint8_t MSG, uint8_t CLASS,uint8_t DATA[])
 {
 //----------------------------------------------------------------------
 // SBG_ECOM_CLASS_CMD_O
@@ -111,11 +111,12 @@ void SBG_Ellipse::AllocationData(uint8_t MSG, uint8_t CLASS,uint8_t DATA[])
         utc.sec_                 = *(uint8_t*)  ParseArray(12,1,DATA);
         utc.nanosec              = *(uint32_t*) ParseArray(13,4,DATA);
         utc.gps_tow              = *(uint32_t*) ParseArray(17,4,DATA);
+        return UTC_TIME_DATA;
     }
 //----------------------------------------------------------------------
     if (CLASS == 0x00 && MSG == 0x03) // IMU DATA
     {
-		imu.time_stamp           = *(uint32_t*) ParseArray(0,4,DATA);
+		    imu.time_stamp           = *(uint32_t*) ParseArray(0,4,DATA);
         imu.imu_status           = *(uint16_t*) ParseArray(4,2,DATA);
         imu.accel_x              = *(float*)    ParseArray(6,4,DATA);
         imu.accel_y              = *(float*)    ParseArray(10,4,DATA);
@@ -130,11 +131,12 @@ void SBG_Ellipse::AllocationData(uint8_t MSG, uint8_t CLASS,uint8_t DATA[])
         imu.delta_angle_x        = *(float*)    ParseArray(46,4,DATA);
         imu.delta_angle_y        = *(float*)    ParseArray(50,4,DATA);
         imu.delta_angle_z        = *(float*)    ParseArray(54,4,DATA);
+        return IMU_DATA;
     }
 //----------------------------------------------------------------------
     if (CLASS == 0x00 && MSG == 0x04) // MAGNETOMETER
     {
-		mag.time_stamp           = *(uint32_t*) ParseArray(0,4,DATA);
+		    mag.time_stamp           = *(uint32_t*) ParseArray(0,4,DATA);
         mag.mag_status           = *(uint16_t*) ParseArray(4,2,DATA);
         mag.mx                   = *(float*)    ParseArray(6,4,DATA);
         mag.my                   = *(float*)    ParseArray(10,4,DATA);
@@ -142,11 +144,12 @@ void SBG_Ellipse::AllocationData(uint8_t MSG, uint8_t CLASS,uint8_t DATA[])
         mag.accel_x              = *(float*)    ParseArray(18,4,DATA);
         mag.accel_y              = *(float*)    ParseArray(22,4,DATA);
         mag.accel_z              = *(float*)    ParseArray(26,4,DATA);
+        return MAGNETOMETER_DATA;
     }
 //----------------------------------------------------------------------
     if (CLASS == 0x00 && MSG == 0x06) // EKF EULER
     {
-		euler.time_stamp           = *(uint32_t*) ParseArray(0,4,DATA);
+		    euler.time_stamp           = *(uint32_t*) ParseArray(0,4,DATA);
         euler.roll                 = *(float*)    ParseArray(4,4,DATA);
         euler.pitch                = *(float*)    ParseArray(8,4,DATA);
         euler.yaw                  = *(float*)    ParseArray(12,4,DATA);
@@ -154,6 +157,7 @@ void SBG_Ellipse::AllocationData(uint8_t MSG, uint8_t CLASS,uint8_t DATA[])
         euler.pitch_acc            = *(float*)    ParseArray(20,4,DATA);
         euler.yaw_acc              = *(float*)    ParseArray(24,4,DATA);
         euler.solution_status      = *(uint32_t*) ParseArray(28,4,DATA);
+        return EKF_EULER_DATA;
     }
 //----------------------------------------------------------------------
     if (CLASS == 0x00 && MSG == 0x07) // EKF QUATERNION
@@ -167,6 +171,7 @@ void SBG_Ellipse::AllocationData(uint8_t MSG, uint8_t CLASS,uint8_t DATA[])
         quat.pitch_acc            = *(float*)    ParseArray(24,4,DATA);
         quat.yaw_acc              = *(float*)    ParseArray(28,4,DATA);
         quat.solution_status      = *(uint32_t*) ParseArray(32,4,DATA);
+        return EKF_QUAT_DATA;
     }
 //----------------------------------------------------------------------
     if (CLASS == 0x00 && MSG == 0x08) // EKF NAVIGATION POSITION VELOCITY
@@ -186,11 +191,12 @@ void SBG_Ellipse::AllocationData(uint8_t MSG, uint8_t CLASS,uint8_t DATA[])
         nav.lon_acc                  = *(float*)    ParseArray(60,4,DATA);  // 1sigma lon accuracy (m)
         nav.alt_acc                  = *(float*)    ParseArray(64,4,DATA);  // 1sigma altitude accuracy (m)
         nav.solution_status          = *(uint32_t*) ParseArray(32,4,DATA);
+        return EKF_NAV_POS_VEL_DATA;
     }
 //----------------------------------------------------------------------
     if (CLASS == 0x00 && MSG == 0x09) // SHIP MOTION
     {
-		ShipMotion.time_stamp           = *(uint32_t*) ParseArray(0,4,DATA);
+		    ShipMotion.time_stamp           = *(uint32_t*) ParseArray(0,4,DATA);
         ShipMotion.heave_period         = *(uint16_t*) ParseArray(4,4,DATA);
         ShipMotion.surge                = *(float*)    ParseArray(8,8,DATA);
         ShipMotion.sway                 = *(float*)    ParseArray(12,4,DATA);
@@ -202,11 +208,12 @@ void SBG_Ellipse::AllocationData(uint8_t MSG, uint8_t CLASS,uint8_t DATA[])
         ShipMotion.vel_y                = *(float*)    ParseArray(36,4,DATA);
         ShipMotion.vel_z                = *(float*)    ParseArray(40,4,DATA);
         ShipMotion.heave_status         = *(float*)    ParseArray(44,2,DATA);
+        return SHIP_MOTION_DATA;
     }
 //----------------------------------------------------------------------
     if (CLASS == 0x00 && MSG == 0x0D) // GPS Velocity
     {
-		GPSVel.time_stamp               = *(uint32_t*) ParseArray(0,4,DATA);
+		    GPSVel.time_stamp               = *(uint32_t*) ParseArray(0,4,DATA);
         GPSVel.gps_vel_status           = *(uint32_t*) ParseArray(4,4,DATA);
         GPSVel.gps_tow                  = *(uint32_t*) ParseArray(8,4,DATA);
         GPSVel.vel_n                    = *(float*)    ParseArray(12,4,DATA); // Velocity (m/s) in North direction
@@ -216,12 +223,13 @@ void SBG_Ellipse::AllocationData(uint8_t MSG, uint8_t CLASS,uint8_t DATA[])
         GPSVel.vel_acc_e                = *(float*)    ParseArray(28,4,DATA); // 1sigma accuracy velocity (m/s) in East direction
         GPSVel.vel_acc_d                = *(float*)    ParseArray(32,4,DATA); // 1sigma accuracy velocity (m/s) in Down direction
         GPSVel.cog                      = *(float*)    ParseArray(36,4,DATA); // True course over ground (deg), 0 to 360 deg
-        GPSVel.cog_acc                  = *(float*)    ParseArray(40,4,DATA); // 1sigma course accuracy (deg) 
+        GPSVel.cog_acc                  = *(float*)    ParseArray(40,4,DATA); // 1sigma course accuracy (deg)
+        return GPS_VEL_DATA;
     }
 //----------------------------------------------------------------------
     if (CLASS == 0x00 && MSG == 0x0E) // GPS Position
     {
-		GPSPos.time_stamp               = *(uint32_t*) ParseArray(0,4,DATA);
+		    GPSPos.time_stamp               = *(uint32_t*) ParseArray(0,4,DATA);
         GPSPos.gps_pos_status           = *(uint32_t*) ParseArray(4,4,DATA);
         GPSPos.gps_tow                  = *(uint32_t*) ParseArray(8,4,DATA);
         GPSPos.lat                      = *(double*)   ParseArray(12,8,DATA); // Latitude(deg)
@@ -234,21 +242,22 @@ void SBG_Ellipse::AllocationData(uint8_t MSG, uint8_t CLASS,uint8_t DATA[])
         GPSPos.num_sat                  = *(uint8_t*)  ParseArray(52,1,DATA); // Number of satelites used for solution
         GPSPos.base_station_id          = *(uint16_t*) ParseArray(54,2,DATA); // ID of base used for DGPS/RTK
         GPSPos.diff_age                 = *(uint16_t*) ParseArray(56,2,DATA); // Differential data age
+        return GPS_POS_DATA;
     }
-    
+
 //----------------------------------------------------------------------
     if (CLASS == 0x00 && MSG == 0x0F) // GPS TRUE HEADING
     {
-		GPSHdt.time_stamp               = *(uint32_t*) ParseArray(0,4,DATA);
+		    GPSHdt.time_stamp               = *(uint32_t*) ParseArray(0,4,DATA);
         GPSHdt.gps_hdt_status           = *(uint16_t*) ParseArray(4,2,DATA);
         GPSHdt.gps_tow                  = *(uint32_t*) ParseArray(6,4,DATA);
         GPSHdt.true_heading             = *(float*)    ParseArray(10,4,DATA); // True heading (deg)
         GPSHdt.true_heading_acc         = *(float*)    ParseArray(14,4,DATA); // True heading accuracy (deg)
         GPSHdt.gps_pitch                = *(float*)    ParseArray(18,4,DATA); // Pitch angle between antennas (deg)
         GPSHdt.gps_pitch_acc            = *(float*)    ParseArray(22,4,DATA); // Estimated GPS antenna pitch accuracy (deg)
-        }
-    
+        return GPS_TRUE_HEADING_DATA;
+    }
+    return NOT_IMPLEMENTED;
 }
 //----------------------------------------------------------------------
 #endif
-

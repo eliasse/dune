@@ -26,7 +26,7 @@ public:
     uint8_t b;
     int n = m_uart->read(&b, 1);
     if(n==0) std::cout << "ERROR read 0 bytes!" << std::endl;
-    std::cout << "stream: read " << n << " bytes. b=" << (int)b << std::endl;
+    //std::cout << "stream: read " << n << " bytes. b=" << (int)b << std::endl;
     return b;
   }
 
