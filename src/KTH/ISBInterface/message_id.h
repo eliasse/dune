@@ -11,6 +11,7 @@
 #define ID_CURRENT             7
 #define ID_THRUSTER_PORT       50
 #define ID_THRUSTER_STRB       51
+#define ID_ECHOSOUNDER         60
 
 
 //DUNE -> ISB

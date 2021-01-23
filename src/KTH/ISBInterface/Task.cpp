@@ -147,8 +147,54 @@ namespace KTH
             //std::cout << "dispatched Temperature message" << std::endl;
           } break;
 
-          case 2: {
-            //std::cout << "ISB received heartbeat and replied" << std::endl;
+          case ID_THRUSTER_PORT: {
+            std::cout << "Port thruster data received" << std::endl;
+            //float rpm       = isb->parse_float();
+            //float current   = isb->parse_float();
+            //float torque    = isb->parse_float();
+            //float tempC     = isb->parse_float();
+            //float voltage   = isb->parse_float();
+            //IMC::Rpm msg;
+            //msg.value = rpm;
+            //msg.setSourceEntity(resolveEntity("Port Motor")); //Crashes here
+            //dispatch(msg);
+          } break;
+
+          case ID_THRUSTER_STRB: {
+            std::cout << "Strb thruster data received" << std::endl;
+            //float rpm       = isb->parse_float();
+            //float current   = isb->parse_float();
+            //float torque    = isb->parse_float();
+            //float tempC     = isb->parse_float();
+            //float voltage   = isb->parse_float();
+            //IMC::Rpm msg;
+            //msg.value = rpm;
+            //msg.setSourceEntity(resolveEntity("Starboard Motor")); //Crashes here
+            //dispatch(msg);
+          } break;
+
+          case ID_ECHOSOUNDER: {
+            std::cout << "Echosounder data received" << std::endl;
+            float dbt                   = isb->parse_float();
+            float offset                = isb->parse_float();
+            float max_range_scale       = isb->parse_float();
+            //float sea_water_temperature = isb->parse_float();
+            uint16_t depth_scaled = offset + dbt*10;
+            uint8_t* depth_bytes = (uint8_t*) &depth_scaled;
+
+            IMC::SonarData sonar_msg;
+            sonar_msg.type = 1; //ECHOSOUNDER
+            sonar_msg.frequency = 200000;
+            sonar_msg.min_range = 0.5;
+            sonar_msg.max_range = max_range_scale;
+            sonar_msg.bits_per_point = 16;
+            sonar_msg.scale_factor = 0.1;
+            //sonar_msg.beam_config =
+            sonar_msg.data.push_back(depth_bytes[0]);
+            sonar_msg.data.push_back(depth_bytes[1]);
+            sonar_msg.setSourceEntity(getEntityId());
+            dispatch(sonar_msg);
+
           } break;
         }
       }
@@ -156,12 +202,12 @@ namespace KTH
       void
       consume(const IMC::SetThrusterActuation* msg)
       {
-        if(msg->id == 1) {
+        if(msg->id == 0) {
           isb->new_package(DI_SET_THRUSTER_PORT);
           isb->add_float(msg->value);
           isb->send_package();
         }
-        if(msg->id == 2) {
+        if(msg->id == 1) {
           isb->new_package(DI_SET_THRUSTER_STRB);
           isb->add_float(msg->value);
           isb->send_package();
