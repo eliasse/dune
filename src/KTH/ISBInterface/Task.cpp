@@ -136,12 +136,6 @@ namespace KTH
           waitForMessages(0.001);
           //std::cout << "Hello! ISBInterface is alive" << std::endl;
           if(isb != NULL) isb->readData();
-
-          DUNE::Time::Delay::wait(1);
-          IMC::Rpm msg;
-          msg.value = 66;
-          msg.setSourceEntity(id_port); //Crashes here
-          dispatch(msg);
         }
       }
 
