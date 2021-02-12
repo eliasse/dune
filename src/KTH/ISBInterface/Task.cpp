@@ -180,9 +180,9 @@ namespace KTH
             float max_range_scale       = isb->parse_float();
             //float sea_water_temperature = isb->parse_float();
             uint16_t depth_scaled = offset + dbt*10;
-            uint8_t* depth_bytes = (uint8_t*) &depth_scaled;
+            //uint8_t* depth_bytes = (uint8_t*) &depth_scaled;
 
-            IMC::SonarData sonar_msg;
+            /*IMC::SonarData sonar_msg;
             sonar_msg.type = 1; //ECHOSOUNDER
             sonar_msg.frequency = 200000;
             sonar_msg.min_range = 0.5;
@@ -192,6 +192,16 @@ namespace KTH
             //sonar_msg.beam_config =
             sonar_msg.data.push_back(depth_bytes[0]);
             sonar_msg.data.push_back(depth_bytes[1]);
+            sonar_msg.setSourceEntity(getEntityId());
+            dispatch(sonar_msg);
+            */
+            IMC::BeamConfig beam;
+            beam.beam_width = 9*3.1415/180.0;
+            beam.beam_height = 9*3.1415/180.0;
+            IMC::Distance sonar_msg;
+            sonar_msg.validity = 1;
+            sonar_msg.beam_config.push_back(beam);
+            sonar_msg.value = depth_scaled;
             sonar_msg.setSourceEntity(getEntityId());
             dispatch(sonar_msg);
 
@@ -204,13 +214,15 @@ namespace KTH
       {
         if(msg->id == 0) {
           isb->new_package(DI_SET_THRUSTER_PORT);
-          isb->add_float(msg->value);
+          isb->add_float(msg->value); //between -1 and 1
           isb->send_package();
+          //std::cout << "Thruster port: " << msg->value << std::endl;
         }
         if(msg->id == 1) {
           isb->new_package(DI_SET_THRUSTER_STRB);
-          isb->add_float(msg->value);
+          isb->add_float(msg->value); //between -1 and 1
           isb->send_package();
+          //std::cout << "Thruster strb: " << msg->value << std::endl;
         }
         else {
           std::cerr << "unknown thruster ID" << std::endl;
