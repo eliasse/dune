@@ -1,2 +1,0 @@
-/usr/bin/ar qc libKTH.CMPS10.a  CMakeFiles/KTH.CMPS10.dir/src/KTH/CMPS10/Task.cpp.o
-/usr/bin/ranlib libKTH.CMPS10.a

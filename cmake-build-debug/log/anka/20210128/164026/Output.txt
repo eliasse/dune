@@ -1,9 +1,0 @@
-[2021/01/28 16:40:26] - WRN [Supervisors.Vehicle] >> now in 'SERVICE' mode
-[2021/01/28 16:40:46] - WRN [Plan.DB] >> storing plan 'cmd-anka' issued through a PlanControl request
-[2021/01/28 16:40:46] - MSG [Plan.Engine] >> request -- Start Plan (cmd-anka)
-[2021/01/28 16:40:46] - MSG [Plan.Engine] >> plan initializing: cmd-anka
-[2021/01/28 16:40:46] - MSG [Plan.Engine] >> 1: executing maneuver
-[2021/01/28 16:40:46] - MSG [Plan.Engine] >> reply -- Start Plan (cmd-anka) -- 1: executing maneuver
-[2021/01/28 16:40:46] - MSG [Transports.Logging] >> log stopped '20210128/164026'
-[2021/01/28 16:40:46] - MSG [Transports.Logging] >> log started '20210128/164046_cmd-anka'
-[2021/01/28 16:40:46] - MSG [Plan.DB] >> set plan (cmd-anka) -- OK (updated)

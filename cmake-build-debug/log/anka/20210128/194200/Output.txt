@@ -1,8 +1,0 @@
-[2021/01/28 19:42:01] - WRN [Supervisors.Vehicle] >> now in 'SERVICE' mode
-[2021/01/28 19:43:14] - MSG [Plan.DB] >> set plan (pl_wtnlo9) -- OK (new entry)
-[2021/01/28 19:43:15] - MSG [Plan.Engine] >> request -- Start Plan (pl_wtnlo9)
-[2021/01/28 19:43:15] - MSG [Plan.Engine] >> plan initializing: pl_wtnlo9
-[2021/01/28 19:43:15] - MSG [Plan.Engine] >> Goto1: executing maneuver
-[2021/01/28 19:43:15] - MSG [Plan.Engine] >> reply -- Start Plan (pl_wtnlo9) -- Goto1: executing maneuver
-[2021/01/28 19:43:15] - MSG [Transports.Logging] >> log stopped '20210128/194200'
-[2021/01/28 19:43:15] - MSG [Transports.Logging] >> log started '20210128/194315_pl_wtnlo9'

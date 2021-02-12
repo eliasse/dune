@@ -1,2 +1,0 @@
-/usr/bin/ar qc libKTH.ISBInterface.a  CMakeFiles/KTH.ISBInterface.dir/src/KTH/ISBInterface/Task.cpp.o
-/usr/bin/ranlib libKTH.ISBInterface.a

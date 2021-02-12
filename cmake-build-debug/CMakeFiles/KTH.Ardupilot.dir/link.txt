@@ -1,2 +1,0 @@
-/usr/bin/ar qc libKTH.Ardupilot.a  CMakeFiles/KTH.Ardupilot.dir/src/KTH/Ardupilot/Task.cpp.o
-/usr/bin/ranlib libKTH.Ardupilot.a

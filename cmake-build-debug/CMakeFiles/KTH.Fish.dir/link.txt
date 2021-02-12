@@ -1,2 +1,0 @@
-/usr/bin/ar qc libKTH.Fish.a  CMakeFiles/KTH.Fish.dir/src/KTH/Fish/Task.cpp.o
-/usr/bin/ranlib libKTH.Fish.a

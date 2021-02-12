@@ -1,2 +1,0 @@
-/usr/bin/ar qc libKTH.TBR700.a  CMakeFiles/KTH.TBR700.dir/src/KTH/TBR700/Task.cpp.o
-/usr/bin/ranlib libKTH.TBR700.a

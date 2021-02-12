@@ -1,2 +1,0 @@
-/usr/bin/ar qc libSensors.SBG_ELLIPSE2D.a  CMakeFiles/Sensors.SBG_ELLIPSE2D.dir/src/Sensors/SBG_ELLIPSE2D/SBG_Ellipse.cpp.o CMakeFiles/Sensors.SBG_ELLIPSE2D.dir/src/Sensors/SBG_ELLIPSE2D/Task.cpp.o
-/usr/bin/ranlib libSensors.SBG_ELLIPSE2D.a
