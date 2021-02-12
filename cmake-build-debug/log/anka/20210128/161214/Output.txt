@@ -1,0 +1,85 @@
+[2021/01/28 16:12:14] - MSG [Transports.TCP.Server/BackSeat] >> listening on 0.0.0.0:6006
+[2021/01/28 16:12:14] - MSG [Transports.TCPOnDemand] >> starting
+[2021/01/28 16:12:14] - MSG [Transports.UDP] >> starting
+[2021/01/28 16:12:14] - MSG [Monitors.Entities] >> Daemon : Boot -> Normal | active
+[2021/01/28 16:12:14] - MSG [Transports.UDP] >> listening on 0.0.0.0:6002
+[2021/01/28 16:12:14] - MSG [Monitors.Entities] >> GPS : Boot -> Normal | active
+[2021/01/28 16:12:15] - MSG [Monitors.Entities] >> Operational Limits : Boot -> Normal | active
+[2021/01/28 16:12:15] - MSG [Transports.Discovery] >> new node within range 'ccu-eliasstrandell-161-141' / 16781 / 10.211.55.2
+[2021/01/28 16:12:15] - MSG [Supervisors.Vehicle] >> entity errors cleared
+[2021/01/28 16:12:15] - WRN [Supervisors.Vehicle] >> now in 'SERVICE' mode
+[2021/01/28 16:12:15] - MSG [Plan.Engine] >> vehicle ready
+[2021/01/28 16:12:23] - WRN [Monitors.Clock] >> adjusting CPU clock by -63781780332.1882 s
+[2021/01/28 16:12:23] - ERR [Monitors.Clock] >> task died with uncaught exception: failed to set time: Invalid argument: restarting
+[2021/01/28 16:12:29] - MSG [Transports.UDP] >> activating transmission to node 'ccu-eliasstrandell-161-141'
+[2021/01/28 16:13:29] - MSG [Transports.UDP] >> deactivating transmission to node 'ccu-eliasstrandell-161-141'
+[2021/01/28 16:16:19] - MSG [Transports.UDP] >> activating transmission to node 'ccu-eliasstrandell-161-141'
+[2021/01/28 16:18:24] - MSG [Transports.UDP] >> deactivating transmission to node 'ccu-eliasstrandell-161-141'
+[2021/01/28 16:20:09] - WRN [Daemon] >> stopping tasks
+[2021/01/28 16:20:09] - MSG [Control.ASV.HeadingAndSpeed] >> stopping
+[2021/01/28 16:20:10] - MSG [Control.ASV.HeadingAndSpeed] >> stopped
+[2021/01/28 16:20:10] - MSG [Control.ASV.RemoteOperation] >> stopping
+[2021/01/28 16:20:10] - MSG [Control.ASV.RemoteOperation] >> stopped
+[2021/01/28 16:20:10] - MSG [Control.Path.VectorField] >> stopping
+[2021/01/28 16:20:10] - MSG [Control.Path.VectorField] >> stopped
+[2021/01/28 16:20:10] - MSG [Maneuver.CommsRelay] >> stopping
+[2021/01/28 16:20:10] - MSG [Maneuver.CommsRelay] >> stopped
+[2021/01/28 16:20:10] - MSG [Maneuver.CompassCalibration] >> stopping
+[2021/01/28 16:20:10] - MSG [Maneuver.CompassCalibration] >> stopped
+[2021/01/28 16:20:10] - MSG [Maneuver.FollowReference.AUV] >> stopping
+[2021/01/28 16:20:10] - MSG [Maneuver.FollowReference.AUV] >> stopped
+[2021/01/28 16:20:10] - MSG [Maneuver.FollowTrajectory] >> stopping
+[2021/01/28 16:20:10] - MSG [Maneuver.FollowTrajectory] >> stopped
+[2021/01/28 16:20:10] - MSG [Maneuver.Multiplexer] >> stopping
+[2021/01/28 16:20:10] - MSG [Maneuver.Multiplexer] >> stopped
+[2021/01/28 16:20:10] - MSG [Maneuver.Teleoperation] >> stopping
+[2021/01/28 16:20:10] - MSG [Maneuver.Teleoperation] >> stopped
+[2021/01/28 16:20:10] - MSG [Monitors.Clock] >> stopping
+[2021/01/28 16:20:10] - MSG [Monitors.Clock] >> stopped
+[2021/01/28 16:20:10] - MSG [Monitors.Entities] >> stopping
+[2021/01/28 16:20:10] - MSG [Monitors.Entities] >> stopped
+[2021/01/28 16:20:10] - MSG [Monitors.OperationalLimits] >> stopping
+[2021/01/28 16:20:10] - MSG [Monitors.OperationalLimits] >> stopped
+[2021/01/28 16:20:10] - MSG [Monitors.Servos] >> stopping
+[2021/01/28 16:20:10] - MSG [Monitors.Servos] >> stopped
+[2021/01/28 16:20:10] - MSG [Navigation.General.GPSNavigation] >> stopping
+[2021/01/28 16:20:10] - MSG [Navigation.General.GPSNavigation] >> stopped
+[2021/01/28 16:20:10] - MSG [Plan.DB] >> stopping
+[2021/01/28 16:20:10] - MSG [Plan.DB] >> stopped
+[2021/01/28 16:20:10] - MSG [Plan.Engine] >> stopping
+[2021/01/28 16:20:10] - MSG [Plan.Engine] >> stopped
+[2021/01/28 16:20:10] - MSG [Plan.Generator] >> stopping
+[2021/01/28 16:20:10] - MSG [Plan.Generator] >> stopped
+[2021/01/28 16:20:10] - MSG [Simulators.GPS] >> stopping
+[2021/01/28 16:20:10] - MSG [Simulators.GPS] >> stopped
+[2021/01/28 16:20:10] - MSG [Simulators.Motor/Port] >> stopping
+[2021/01/28 16:20:10] - MSG [Simulators.Motor/Port] >> stopped
+[2021/01/28 16:20:10] - MSG [Simulators.Motor/Starboard] >> stopping
+[2021/01/28 16:20:10] - MSG [Simulators.Motor/Starboard] >> stopped
+[2021/01/28 16:20:10] - MSG [Simulators.VSIM] >> stopping
+[2021/01/28 16:20:10] - MSG [Simulators.VSIM] >> stopped
+[2021/01/28 16:20:10] - MSG [Supervisors.Vehicle] >> stopping
+[2021/01/28 16:20:10] - MSG [Supervisors.Vehicle] >> stopped
+[2021/01/28 16:20:10] - MSG [Transports.Announce] >> stopping
+[2021/01/28 16:20:10] - MSG [Transports.Announce] >> stopped
+[2021/01/28 16:20:10] - MSG [Transports.Cache] >> stopping
+[2021/01/28 16:20:10] - MSG [Transports.Cache] >> stopped
+[2021/01/28 16:20:10] - MSG [Transports.Discovery] >> stopping
+[2021/01/28 16:20:10] - MSG [Transports.Discovery] >> stopped
+[2021/01/28 16:20:10] - MSG [Transports.FTP] >> stopping
+[2021/01/28 16:20:10] - MSG [Transports.FTP] >> stopped
+[2021/01/28 16:20:10] - MSG [Transports.Fragments] >> stopping
+[2021/01/28 16:20:10] - MSG [Transports.Fragments] >> stopped
+[2021/01/28 16:20:10] - MSG [Transports.HTTP] >> stopping
+[2021/01/28 16:20:10] - MSG [Transports.HTTP] >> stopped
+[2021/01/28 16:20:10] - MSG [Transports.LogBook] >> stopping
+[2021/01/28 16:20:10] - MSG [Transports.LogBook] >> stopped
+[2021/01/28 16:20:10] - MSG [Transports.Logging] >> stopping
+[2021/01/28 16:20:10] - MSG [Transports.Logging] >> stopped
+[2021/01/28 16:20:10] - MSG [Transports.TCP.Server/BackSeat] >> stopping
+[2021/01/28 16:20:10] - MSG [Transports.TCP.Server/BackSeat] >> stopped
+[2021/01/28 16:20:10] - MSG [Transports.TCPOnDemand] >> stopping
+[2021/01/28 16:20:10] - MSG [Transports.TCPOnDemand] >> stopped
+[2021/01/28 16:20:10] - MSG [Transports.UDP] >> stopping
+[2021/01/28 16:20:11] - MSG [Transports.UDP] >> stopped
+[2021/01/28 16:20:11] - MSG [Daemon] >> clean shutdown

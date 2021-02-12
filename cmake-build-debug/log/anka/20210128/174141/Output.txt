@@ -1,0 +1,19 @@
+[2021/01/28 17:41:41] - MSG [Monitors.Entities] >> Daemon : Boot -> Normal | active
+[2021/01/28 17:41:41] - MSG [Transports.UDP] >> listening on 0.0.0.0:6002
+[2021/01/28 17:41:41] - MSG [Monitors.Entities] >> GPS : Boot -> Normal | active
+[2021/01/28 17:41:42] - MSG [Monitors.Entities] >> Operational Limits : Boot -> Normal | active
+[2021/01/28 17:41:42] - MSG [Supervisors.Vehicle] >> entity errors cleared
+[2021/01/28 17:41:42] - WRN [Supervisors.Vehicle] >> now in 'SERVICE' mode
+[2021/01/28 17:41:42] - MSG [Plan.Engine] >> vehicle ready
+[2021/01/28 17:41:44] - MSG [Transports.Discovery] >> new node within range 'ccu-parallels-55-7' / 22279 / 10.211.55.7
+[2021/01/28 17:41:46] - MSG [Transports.UDP] >> activating transmission to node 'ccu-parallels-55-7'
+[2021/01/28 17:41:50] - WRN [Monitors.Clock] >> adjusting CPU clock by -63781780332.0083 s
+[2021/01/28 17:41:50] - ERR [Monitors.Clock] >> task died with uncaught exception: failed to set time: Invalid argument: restarting
+[2021/01/28 17:41:52] - WRN [Plan.DB] >> storing plan 'cmd-anka' issued through a PlanControl request
+[2021/01/28 17:41:52] - MSG [Plan.Engine] >> request -- Start Plan (cmd-anka)
+[2021/01/28 17:41:52] - MSG [Plan.Engine] >> plan initializing: cmd-anka
+[2021/01/28 17:41:52] - MSG [Plan.Engine] >> 1: executing maneuver
+[2021/01/28 17:41:52] - MSG [Plan.Engine] >> reply -- Start Plan (cmd-anka) -- 1: executing maneuver
+[2021/01/28 17:41:52] - MSG [Transports.Logging] >> log stopped '20210128/174141'
+[2021/01/28 17:41:52] - MSG [Transports.Logging] >> log started '20210128/174152_cmd-anka'
+[2021/01/28 17:41:52] - MSG [Plan.DB] >> set plan (cmd-anka) -- OK (updated)

@@ -1,0 +1,7 @@
+[2021/01/28 17:50:27] - WRN [Supervisors.Vehicle] >> now in 'MANEUVERING' mode
+[2021/01/28 17:50:27] - MSG [Control.Path.VectorField] >> path (lat/lon): 63.59027 9.47432 to 63.58963 9.47248
+[2021/01/28 17:50:29] - WRN [Monitors.Clock] >> adjusting CPU clock by -63781780332.2056 s
+[2021/01/28 17:50:29] - ERR [Monitors.Clock] >> task died with uncaught exception: failed to set time: Invalid argument: restarting
+[2021/01/28 17:52:12] - MSG [Plan.Engine] >> plan completed
+[2021/01/28 17:52:12] - MSG [Transports.Logging] >> log stopped '20210128/175027_cmd-anka'
+[2021/01/28 17:52:12] - MSG [Transports.Logging] >> log started '20210128/175212'

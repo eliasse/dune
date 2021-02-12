@@ -1,0 +1,18 @@
+[2021/01/28 17:50:20] - MSG [Transports.UDP] >> starting
+[2021/01/28 17:50:20] - MSG [Monitors.Entities] >> Daemon : Boot -> Normal | active
+[2021/01/28 17:50:20] - MSG [Transports.UDP] >> listening on 0.0.0.0:6002
+[2021/01/28 17:50:20] - MSG [Monitors.Entities] >> GPS : Boot -> Normal | active
+[2021/01/28 17:50:21] - MSG [Monitors.Entities] >> Operational Limits : Boot -> Normal | active
+[2021/01/28 17:50:21] - MSG [Supervisors.Vehicle] >> entity errors cleared
+[2021/01/28 17:50:21] - WRN [Supervisors.Vehicle] >> now in 'SERVICE' mode
+[2021/01/28 17:50:21] - MSG [Plan.Engine] >> vehicle ready
+[2021/01/28 17:50:22] - MSG [Transports.Discovery] >> new node within range 'ccu-parallels-55-7' / 22279 / 10.211.55.7
+[2021/01/28 17:50:25] - MSG [Transports.UDP] >> activating transmission to node 'ccu-parallels-55-7'
+[2021/01/28 17:50:27] - WRN [Plan.DB] >> storing plan 'cmd-anka' issued through a PlanControl request
+[2021/01/28 17:50:27] - MSG [Plan.Engine] >> request -- Start Plan (cmd-anka)
+[2021/01/28 17:50:27] - MSG [Plan.Engine] >> plan initializing: cmd-anka
+[2021/01/28 17:50:27] - MSG [Plan.Engine] >> 1: executing maneuver
+[2021/01/28 17:50:27] - MSG [Plan.Engine] >> reply -- Start Plan (cmd-anka) -- 1: executing maneuver
+[2021/01/28 17:50:27] - MSG [Transports.Logging] >> log stopped '20210128/175020'
+[2021/01/28 17:50:27] - MSG [Transports.Logging] >> log started '20210128/175027_cmd-anka'
+[2021/01/28 17:50:27] - MSG [Plan.DB] >> set plan (cmd-anka) -- OK (updated)

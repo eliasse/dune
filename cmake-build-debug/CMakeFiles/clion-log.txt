@@ -1,0 +1,292 @@
+/home/parallels/clion-2020.1.1/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/parallels/CLionProjects/dune
+-- The C compiler identification is GNU 7.5.0
+-- The CXX compiler identification is GNU 7.5.0
+-- Check for working C compiler: /usr/bin/cc
+-- Check for working C compiler: /usr/bin/cc - works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ - works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- 
+-- ******************************************
+-- ***           Probing Compiler         ***
+-- ******************************************
+-- 
+-- ******************************************
+-- ***        Probing Target CPU          ***
+-- ******************************************
+-- 
+-- ******************************************
+-- ***  Probing Target CPU Optimizations  ***
+-- ******************************************
+-- 
+-- ******************************************
+-- ***      Probing Operating System      ***
+-- ******************************************
+-- 
+-- ******************************************
+-- ***        Probing C/C++ Library       ***
+-- ******************************************
+-- 
+-- ******************************************
+-- ***      Probing System Libraries      ***
+-- ******************************************
+-- 
+-- ******************************************
+-- ***       Probing System Headers       ***
+-- ******************************************
+-- 
+-- ******************************************
+-- ***       Probing System Functions     ***
+-- ******************************************
+-- 
+-- ******************************************
+-- ***            Probing Types           ***
+-- ******************************************
+-- 
+-- ******************************************
+-- ***          Probing Libraries         ***
+-- ******************************************
+-- 
+-- ******************************************
+-- ***          Probing Programs          ***
+-- ******************************************
+-- Looking for Python interpreter
+-- IMC code generation enabled
+-- Looking for Doxygen
+-- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
+-- Looking for Info-ZIP
+-- Documentation packaging enabled
+-- Gettext string extraction enabled
+-- Gettext catalog merging enabled
+-- Gettext catalog compilation enabled
+-- 
+-- ******************************************
+-- ***           System Summary           ***
+-- ******************************************
+-- Processor     : x86 64 bit / Little Endian
+-- System        : Linux
+-- Compiler      : GCC v7.5
+-- C/C++ Library : GNU
+-- Canonical     : x86-64bit-linux-glibc-gcc75
+-- 
+-- ******************************************
+-- ***          Optional Features         ***
+-- ******************************************
+-- Module PICCOLO: Disabled
+-- Module SHARED: Disabled
+-- Module DEBUG: Disabled
+-- Module PROFILE: Disabled
+-- Module TLSF: Disabled
+-- Module QT5: Disabled
+-- Module DC1394: Disabled
+-- Module V4L2: Disabled
+-- Module JS: Disabled
+-- Module XENETH: Disabled
+-- Module BLUEVIEW: Disabled
+-- Module OPENCV: Disabled
+-- Module NO_RTTI: Disabled
+-- Module UEYE: Disabled
+-- Module H5CPP: Disabled
+-- Module ELLIPSOIDAL: Disabled
+-- Building static library
+-- 
+-- ******************************************
+-- ***                Tasks               ***
+-- ******************************************
+-- Actuators.AMC
+-- Actuators.Broom
+-- Actuators.FLIRPTU
+-- Actuators.LED4R
+-- Actuators.MCD4R
+-- Actuators.MicroCamD
+-- Actuators.PWM
+-- Actuators.SCRTv4
+-- Actuators.SIMCT01
+-- Actuators.SingleSIMCT01
+-- Autonomy.OnEvent
+-- Autonomy.TREX
+-- Autonomy.TextActions
+-- Control.ASV.HeadingAndSpeed
+-- Control.ASV.RemoteOperation
+-- Control.AUV.Allocator
+-- Control.AUV.Attitude
+-- Control.AUV.Diving
+-- Control.AUV.LMI
+-- Control.AUV.RemoteOperation
+-- Control.AUV.Speed
+-- Control.AntennaTracker
+-- Control.Path.Height
+-- Control.Path.ILOS
+-- Control.Path.LOSnSMC
+-- Control.Path.PurePursuit
+-- Control.Path.VectorField
+-- Control.ROV.Depth
+-- Control.ROV.HorizontalPlane
+-- Control.ROV.RemoteOperation
+-- Control.UAV.Ardupilot
+-- Control.UAV.LOS
+-- Control.UAV.PX4
+-- Control.UAV.RemoteOperation
+-- KTH.Ardupilot
+-- KTH.CMPS10
+-- KTH.Fish
+-- KTH.ISBInterface
+-- KTH.TBR700
+-- Maneuver.CommsRelay
+-- Maneuver.CompassCalibration
+-- Maneuver.CoverArea
+-- Maneuver.FollowReference.AUV
+-- Maneuver.FollowReference.UAV
+-- Maneuver.FollowSystem
+-- Maneuver.FollowTrajectory
+-- Maneuver.Multiplexer
+-- Maneuver.RowsCoverage
+-- Maneuver.Teleoperation
+-- Maneuver.VehicleFormation.SMC
+-- Monitors.Clock
+-- Monitors.Collisions
+-- Monitors.Emergency
+-- Monitors.Entities
+-- Monitors.FuelLevel
+-- Monitors.Medium
+-- Monitors.OperationalLimits
+-- Monitors.Servos
+-- Navigation.AUV.Navigation
+-- Navigation.AUV.Ranger
+-- Navigation.General.GPSNavigation
+-- Navigation.General.LBL
+-- Navigation.General.ROV
+-- Plan.DB
+-- Plan.Engine
+-- Plan.Generator
+-- Power.APD
+-- Power.BATMANv2
+-- Power.CPMB
+-- Power.CPMBv2
+-- Power.DOAMv1
+-- Power.DOAMv2
+-- Power.LUEMB
+-- Power.MCBv2
+-- Power.OPCON
+-- Power.PCTLv2
+-- Power.PSIMAR
+-- Sensors.AIM104MultiIO
+-- Sensors.AIS
+-- Sensors.CyclopsC7
+-- Sensors.DMS
+-- Sensors.DataStore
+-- Sensors.Edgetech2205
+-- Sensors.EmulatedGPS
+-- Sensors.GPS
+-- Sensors.Genesys
+-- Sensors.GillWindObserverII
+-- Sensors.IFOG
+-- Sensors.Imagenex837B
+-- Sensors.Imagenex852
+-- Sensors.Imagenex872
+-- Sensors.Imagenex881A
+-- Sensors.Keller
+-- Sensors.LIMU
+-- Sensors.MLBL
+-- Sensors.MLBLTracker
+-- Sensors.MTi
+-- Sensors.MetrecX
+-- Sensors.Microstrain3DMGX1
+-- Sensors.Microstrain3DMGX3
+-- Sensors.MiniSVS
+-- Sensors.OEMX
+-- Sensors.OS4000
+-- Sensors.SADC
+-- Sensors.SBG_ELLIPSE2D
+-- Sensors.SCH311X
+-- Sensors.SW100
+-- Sensors.SonTekArgonaut
+-- Sensors.ThermalZone
+-- Sensors.WifiRSSI
+-- Sensors.XR620CTD
+-- Sensors.XchangeSV
+-- Simulators.AcousticModem
+-- Simulators.CDC3
+-- Simulators.CTD
+-- Simulators.DVL
+-- Simulators.DepthSensor
+-- Simulators.Docking
+-- Simulators.Environment
+-- Simulators.GPS
+-- Simulators.Gaussian
+-- Simulators.IMU
+-- Simulators.Iridium
+-- Simulators.LBL
+-- Simulators.Leaks
+-- Simulators.Motor
+-- Simulators.Servos
+-- Simulators.StreamVelocity
+-- Simulators.Target
+-- Simulators.UAV
+-- Simulators.UAVAutopilot
+-- Simulators.USBL
+-- Simulators.VSIM
+-- Supervisors.AUV.Assist
+-- Supervisors.AUV.LostComms
+-- Supervisors.Delegator
+-- Supervisors.Entities
+-- Supervisors.Power
+-- Supervisors.PowerManager
+-- Supervisors.Reporter
+-- Supervisors.SlaveCPU
+-- Supervisors.UAV.LostComms
+-- Supervisors.Vehicle
+-- Transports.Announce
+-- Transports.Cache
+-- Transports.CommManager
+-- Transports.DataStore
+-- Transports.Discovery
+-- Transports.Evologics
+-- Transports.FTP
+-- Transports.Fragments
+-- Transports.GSM
+-- Transports.HTTP
+-- Transports.Iridium
+-- Transports.IridiumSBD
+-- Transports.LogBook
+-- Transports.Logging
+-- Transports.LoggingDigest
+-- Transports.MobileInternet
+-- Transports.Radio
+-- Transports.Replay
+-- Transports.Seatrac
+-- Transports.Serial
+-- Transports.SerialOverTCP
+-- Transports.TCP.Client
+-- Transports.TCP.Server
+-- Transports.TCPOnDemand
+-- Transports.UAN
+-- Transports.UDP
+-- UserInterfaces.Buttons
+-- UserInterfaces.LCD
+-- UserInterfaces.LEDs
+-- UserInterfaces.MantaPanel
+-- Vision.DFK51BG02H
+-- Vision.FrameGrabber
+-- Vision.Lumenera
+-- Vision.PhotoTrigger
+-- Vision.UAVCamera
+-- 
+-- Disabled due to missing dependencies
+--   Maneuver.FlyByCamera
+--   Maneuver.FollowTarget
+--   Maneuver.VehicleFormation.Coordinator
+--   Maneuver.VehicleFormation.FormCollAvoid
+--   Maneuver.VehicleFormation.Test
+--   Vision.UI2210MGL
+-- 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/parallels/CLionProjects/dune/cmake-build-debug

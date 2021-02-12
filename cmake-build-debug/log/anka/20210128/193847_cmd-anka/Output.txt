@@ -1,0 +1,7 @@
+[2021/01/28 19:38:47] - WRN [Supervisors.Vehicle] >> now in 'MANEUVERING' mode
+[2021/01/28 19:38:48] - MSG [Control.Path.VectorField] >> path (lat/lon): 63.59025 9.47422 to 63.58973 9.47217
+[2021/01/28 19:39:02] - MSG [Plan.Engine] >> request -- Stop Plan ()
+[2021/01/28 19:39:02] - MSG [Plan.Engine] >> reply -- Stop Plan (cmd-anka) -- OK
+[2021/01/28 19:39:02] - MSG [Plan.Engine] >> plan stopped
+[2021/01/28 19:39:02] - MSG [Transports.Logging] >> log stopped '20210128/193847_cmd-anka'
+[2021/01/28 19:39:02] - MSG [Transports.Logging] >> log started '20210128/193902'

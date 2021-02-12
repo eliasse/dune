@@ -57,16 +57,36 @@ namespace KTH
       //! Constructor.
       //! @param[in] name task name.
       //! @param[in] ctx context.
+      // Serial port device.
+      std::string uart_dev;
+      // Serial port baud rate.
+      int uart_baud;
+
+      // Motor Entity ID's
+      unsigned int id_port;
+      unsigned int id_starboard;
+
       Task(const std::string& name, Tasks::Context& ctx):
         DUNE::Tasks::Task(name, ctx)
       {
+          param("Serial Port - Device", uart_dev)
+                  .defaultValue("")
+                  .description("Serial port device used to communicate with the sensor");
+
+          param("Serial Port - Baud Rate", uart_baud)
+                  .defaultValue("9600")
+                  .description("Serial port baud rate");
+
         isb = new SerialInterface();
-        isb->setup("/dev/ttyACM0", 115200);
+        isb->setup(uart_dev, uart_baud);
         //isb->setCallback(&this->ISB_CALLBACK);
         auto fp = std::bind(&Task::ISB_CALLBACK, this);
         isb->setCallback(fp);
 
         bind<SetThrusterActuation>(this);
+
+        id_port = reserveEntity("Port Motor");
+        id_starboard = reserveEntity("Starboard Motor");
       }
 
       //! Update internal state with new parameter values.
@@ -116,6 +136,12 @@ namespace KTH
           waitForMessages(0.001);
           //std::cout << "Hello! ISBInterface is alive" << std::endl;
           if(isb != NULL) isb->readData();
+
+          DUNE::Time::Delay::wait(1);
+          IMC::Rpm msg;
+          msg.value = 66;
+          msg.setSourceEntity(id_port); //Crashes here
+          dispatch(msg);
         }
       }
 
@@ -149,15 +175,15 @@ namespace KTH
 
           case ID_THRUSTER_PORT: {
             std::cout << "Port thruster data received" << std::endl;
-            //float rpm       = isb->parse_float();
+            float rpm       = isb->parse_float();
             //float current   = isb->parse_float();
             //float torque    = isb->parse_float();
             //float tempC     = isb->parse_float();
             //float voltage   = isb->parse_float();
-            //IMC::Rpm msg;
-            //msg.value = rpm;
-            //msg.setSourceEntity(resolveEntity("Port Motor")); //Crashes here
-            //dispatch(msg);
+            IMC::Rpm msg;
+            msg.value = (int16_t)rpm;
+            msg.setSourceEntity(id_port); //Crashes here
+            dispatch(msg);
           } break;
 
           case ID_THRUSTER_STRB: {
@@ -167,10 +193,11 @@ namespace KTH
             //float torque    = isb->parse_float();
             //float tempC     = isb->parse_float();
             //float voltage   = isb->parse_float();
-            //IMC::Rpm msg;
-            //msg.value = rpm;
-            //msg.setSourceEntity(resolveEntity("Starboard Motor")); //Crashes here
-            //dispatch(msg);
+            float rpm = 99;
+            IMC::Rpm msg;
+            msg.value = (int16_t)rpm;
+            msg.setSourceEntity(id_starboard);
+            dispatch(msg);
           } break;
 
           case ID_ECHOSOUNDER: {

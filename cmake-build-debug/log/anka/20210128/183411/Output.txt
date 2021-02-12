@@ -1,0 +1,16 @@
+[2021/01/28 18:34:11] - MSG [Monitors.Entities] >> GPS : Boot -> Normal | active
+[2021/01/28 18:34:12] - MSG [Monitors.Entities] >> Operational Limits : Boot -> Normal | active
+[2021/01/28 18:34:13] - MSG [Supervisors.Vehicle] >> entity errors cleared
+[2021/01/28 18:34:13] - WRN [Supervisors.Vehicle] >> now in 'SERVICE' mode
+[2021/01/28 18:34:13] - MSG [Plan.Engine] >> vehicle ready
+[2021/01/28 18:34:14] - MSG [Transports.Discovery] >> new node within range 'ccu-parallels-55-7' / 22279 / 10.211.55.7
+[2021/01/28 18:34:16] - MSG [Transports.UDP] >> activating transmission to node 'ccu-parallels-55-7'
+[2021/01/28 18:34:20] - WRN [Monitors.Clock] >> adjusting CPU clock by -63781780332.0575 s
+[2021/01/28 18:34:20] - ERR [Monitors.Clock] >> task died with uncaught exception: failed to set time: Invalid argument: restarting
+[2021/01/28 18:35:52] - MSG [Plan.DB] >> set plan (rowscov-anka) -- OK (new entry)
+[2021/01/28 18:35:54] - MSG [Plan.Engine] >> request -- Start Plan (rowscov-anka)
+[2021/01/28 18:35:54] - MSG [Plan.Engine] >> plan initializing: rowscov-anka
+[2021/01/28 18:35:54] - ERR [Plan.Engine] >> reply -- Start Plan (rowscov-anka) -- parse error: RowsCoverage1: maneuver is not supported
+[2021/01/28 18:35:54] - WRN [Plan.Engine] >> plan parse failed: parse error: RowsCoverage1: maneuver is not supported
+[2021/01/28 18:35:54] - MSG [Transports.Logging] >> log stopped '20210128/183411'
+[2021/01/28 18:35:54] - MSG [Transports.Logging] >> log started '20210128/183554'

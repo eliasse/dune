@@ -1,0 +1,3 @@
+file(REMOVE_RECURSE
+  "libKTH.CMPS10.a"
+)

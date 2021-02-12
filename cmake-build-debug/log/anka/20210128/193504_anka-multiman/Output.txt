@@ -1,0 +1,8 @@
+[2021/01/28 19:35:04] - WRN [Supervisors.Vehicle] >> now in 'MANEUVERING' mode
+[2021/01/28 19:35:04] - ERR [Control.Path.VectorField] >> track length is too long
+[2021/01/28 19:35:04] - MSG [Monitors.Entities] >> Path Control : Normal -> Error | track length is too long
+[2021/01/28 19:35:05] - WRN [Supervisors.Vehicle] >> vehicle errors: Path Control
+[2021/01/28 19:35:05] - WRN [Supervisors.Vehicle] >> now in 'ERROR' mode
+[2021/01/28 19:35:05] - ERR [Plan.Engine] >> reply -- Start Plan (anka-multiman) -- Path Control: track length is too long
+[2021/01/28 19:35:05] - MSG [Transports.Logging] >> log stopped '20210128/193504_anka-multiman'
+[2021/01/28 19:35:05] - MSG [Transports.Logging] >> log started '20210128/193505'

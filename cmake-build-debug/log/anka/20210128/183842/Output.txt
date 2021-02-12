@@ -1,0 +1,20 @@
+[2021/01/28 18:38:42] - MSG [Transports.TCPOnDemand] >> starting
+[2021/01/28 18:38:42] - MSG [Transports.TCP.Server/BackSeat] >> listening on 0.0.0.0:6006
+[2021/01/28 18:38:42] - MSG [Transports.UDP] >> starting
+[2021/01/28 18:38:42] - MSG [Monitors.Entities] >> Daemon : Boot -> Normal | active
+[2021/01/28 18:38:42] - MSG [Transports.UDP] >> listening on 0.0.0.0:6002
+[2021/01/28 18:38:42] - MSG [Monitors.Entities] >> GPS : Boot -> Normal | active
+[2021/01/28 18:38:43] - MSG [Monitors.Entities] >> Operational Limits : Boot -> Normal | active
+[2021/01/28 18:38:43] - MSG [Supervisors.Vehicle] >> entity errors cleared
+[2021/01/28 18:38:43] - WRN [Supervisors.Vehicle] >> now in 'SERVICE' mode
+[2021/01/28 18:38:43] - MSG [Plan.Engine] >> vehicle ready
+[2021/01/28 18:38:45] - MSG [Transports.Discovery] >> new node within range 'ccu-parallels-55-7' / 22279 / 10.211.55.7
+[2021/01/28 18:38:47] - MSG [Transports.UDP] >> activating transmission to node 'ccu-parallels-55-7'
+[2021/01/28 18:38:51] - WRN [Monitors.Clock] >> adjusting CPU clock by -63781780332.0902 s
+[2021/01/28 18:38:51] - ERR [Monitors.Clock] >> task died with uncaught exception: failed to set time: Invalid argument: restarting
+[2021/01/28 18:38:51] - MSG [Plan.Engine] >> request -- Start Plan (rowscov-anka)
+[2021/01/28 18:38:51] - MSG [Plan.Engine] >> plan initializing: rowscov-anka
+[2021/01/28 18:38:51] - MSG [Plan.Engine] >> 1: executing maneuver
+[2021/01/28 18:38:51] - MSG [Plan.Engine] >> reply -- Start Plan (rowscov-anka) -- 1: executing maneuver
+[2021/01/28 18:38:51] - MSG [Transports.Logging] >> log stopped '20210128/183842'
+[2021/01/28 18:38:51] - MSG [Transports.Logging] >> log started '20210128/183851_rowscov-anka'

@@ -1,0 +1,7 @@
+[2021/01/28 19:41:41] - WRN [Supervisors.Vehicle] >> now in 'SERVICE' mode
+[2021/01/28 19:41:52] - MSG [Plan.Engine] >> request -- Start Plan (rowscov-anka)
+[2021/01/28 19:41:52] - MSG [Plan.Engine] >> plan initializing: rowscov-anka
+[2021/01/28 19:41:52] - MSG [Plan.Engine] >> 1: executing maneuver
+[2021/01/28 19:41:52] - MSG [Plan.Engine] >> reply -- Start Plan (rowscov-anka) -- 1: executing maneuver
+[2021/01/28 19:41:52] - MSG [Transports.Logging] >> log stopped '20210128/194141'
+[2021/01/28 19:41:52] - MSG [Transports.Logging] >> log started '20210128/194152_rowscov-anka'

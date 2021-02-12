@@ -1,0 +1,21 @@
+[2021/01/28 18:38:52] - WRN [Supervisors.Vehicle] >> now in 'MANEUVERING' mode
+[2021/01/28 18:38:52] - MSG [Control.Path.VectorField] >> path (lat/lon): 63.59027 9.47432 to 63.59051 9.47219
+[2021/01/28 18:40:14] - MSG [Plan.Engine] >> RowsCoverage1: executing maneuver
+[2021/01/28 18:40:15] - MSG [Control.Path.VectorField] >> path (lat/lon): 63.59051 9.47219 to 63.59108 9.47294
+[2021/01/28 18:41:15] - MSG [Control.Path.VectorField] >> path (lat/lon): 63.59108 9.47294 to 63.59121 9.47294
+[2021/01/28 18:41:29] - MSG [Control.Path.VectorField] >> path (lat/lon): 63.59121 9.47294 to 63.59314 9.47294
+[2021/01/28 18:44:01] - MSG [Control.Path.VectorField] >> path (lat/lon): 63.59314 9.47294 to 63.59314 9.47393
+[2021/01/28 18:44:43] - MSG [Control.Path.VectorField] >> path (lat/lon): 63.59314 9.47393 to 63.59301 9.47393
+[2021/01/28 18:45:01] - MSG [Control.Path.VectorField] >> path (lat/lon): 63.59301 9.47393 to 63.59108 9.47393
+[2021/01/28 18:47:34] - MSG [Control.Path.VectorField] >> path (lat/lon): 63.59108 9.47393 to 63.59108 9.47493
+[2021/01/28 18:48:16] - MSG [Control.Path.VectorField] >> path (lat/lon): 63.59108 9.47493 to 63.59121 9.47493
+[2021/01/28 18:48:33] - MSG [Control.Path.VectorField] >> path (lat/lon): 63.59121 9.47493 to 63.59314 9.47493
+[2021/01/28 18:51:06] - MSG [Control.Path.VectorField] >> path (lat/lon): 63.59314 9.47493 to 63.59314 9.47592
+[2021/01/28 18:51:49] - MSG [Control.Path.VectorField] >> path (lat/lon): 63.59314 9.47592 to 63.59301 9.47592
+[2021/01/28 18:52:06] - MSG [Control.Path.VectorField] >> path (lat/lon): 63.59301 9.47592 to 63.59108 9.47592
+[2021/01/28 18:54:39] - MSG [Control.Path.VectorField] >> path (lat/lon): 63.59108 9.47592 to 63.59108 9.47692
+[2021/01/28 18:55:21] - MSG [Control.Path.VectorField] >> path (lat/lon): 63.59108 9.47692 to 63.59121 9.47692
+[2021/01/28 18:55:39] - MSG [Control.Path.VectorField] >> path (lat/lon): 63.59121 9.47692 to 63.59314 9.47692
+[2021/01/28 18:58:12] - MSG [Plan.Engine] >> plan completed
+[2021/01/28 18:58:12] - MSG [Transports.Logging] >> log stopped '20210128/183851_rowscov-anka'
+[2021/01/28 18:58:12] - MSG [Transports.Logging] >> log started '20210128/185812'
