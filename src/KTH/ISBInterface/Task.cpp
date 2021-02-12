@@ -188,12 +188,11 @@ namespace KTH
 
           case ID_THRUSTER_STRB: {
             std::cout << "Strb thruster data received" << std::endl;
-            //float rpm       = isb->parse_float();
+            float rpm       = isb->parse_float();
             //float current   = isb->parse_float();
             //float torque    = isb->parse_float();
             //float tempC     = isb->parse_float();
             //float voltage   = isb->parse_float();
-            float rpm = 99;
             IMC::Rpm msg;
             msg.value = (int16_t)rpm;
             msg.setSourceEntity(id_starboard);
