@@ -56,6 +56,8 @@ namespace KTH
       unsigned uart_baud;
     };
 
+    unsigned int id_true_heading;
+
     struct Task: public Tasks::Task
     {
       //Local variables
@@ -73,6 +75,16 @@ namespace KTH
         param("Serial Port - Baud Rate", m_args.uart_baud)
         .defaultValue("9600")
         .description("Serial port baud rate");
+
+
+      }
+
+      //! Reserve entity identifiers.
+      void
+      onEntityReservation(void)
+      {
+        resolveEntity(getEntityId());
+        id_true_heading = reserveEntity("SBG ELLIPSE TRUE HEADING");
       }
 
       void
@@ -180,7 +192,11 @@ namespace KTH
             break;
             case GPS_TRUE_HEADING_DATA:
             {
-
+              IMC::EulerAngles msg;
+              msg.theta = ahrs.GPSHdt.gps_pitch;
+              msg.psi = ahrs.GPSHdt.true_heading;
+              msg.setSourceEntity(id_true_heading);
+              dispatch(msg);
             }
             break;
           }
