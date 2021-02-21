@@ -9,11 +9,17 @@ class Stream {
 
   // Serial port handle.
   Hardware::SerialPort* m_uart;
+  std::string port;
+  unsigned baud;
 
 public:
 
-  Stream() {
-    m_uart = new SerialPort("/dev/ttyUSB0", 230400);
+  Stream(std::string _port, unsigned _baud) {
+    port = _port;
+    baud = _baud;
+    std::cout << "Opening serial port" << std::endl;
+    m_uart = new Hardware::SerialPort(port, baud);
+    std::cout << "Done!" << std::endl;
   }
 
   bool available() {

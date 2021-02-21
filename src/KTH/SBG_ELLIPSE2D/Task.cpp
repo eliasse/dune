@@ -50,28 +50,29 @@ namespace KTH
 
     struct Arguments
     {
-      //TODO arguments
+      // Serial port device.
+      std::string uart_dev;
+      // Serial port baud rate.
+      unsigned uart_baud;
     };
 
     struct Task: public Tasks::Task
     {
       //Local variables
+      Arguments m_args;
       SBG_Ellipse ahrs;
       Stream* serialPort;
 
       Task(const std::string& name, Tasks::Context& ctx):
         Tasks::Task(name, ctx)
       {
-        // Define configuration parameters.
+        param("Serial Port - Device", m_args.uart_dev)
+                            .defaultValue("/dev/ttyUSB-1")
+                            .description("Serial port device (used to communicate with the actuator)");
 
-
-        //Start sbg etc
-        serialPort = new Stream();
-        ahrs.begin(serialPort);
-
-
-        //bind<IMC::DevDataText>(this);
-        //bind<IMC::IoEvent>(this);
+        param("Serial Port - Baud Rate", m_args.uart_baud)
+        .defaultValue("9600")
+        .description("Serial port baud rate");
       }
 
       void
@@ -88,6 +89,10 @@ namespace KTH
       void
       onResourceInitialization(void)
       {
+          //Start sbg etc
+          std::cout << "SBG_Ellipse: Serial port: " << m_args.uart_dev << ", baud:" << m_args.uart_baud << std::endl;
+          serialPort = new Stream(m_args.uart_dev, m_args.uart_baud);
+          ahrs.begin(serialPort);
       }
 
       void
