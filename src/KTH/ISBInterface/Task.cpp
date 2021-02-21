@@ -48,19 +48,19 @@ namespace KTH
     using DUNE_NAMESPACES;
 
     SerialInterface* isb = NULL;
-    //RosInterFace rosInterface;
-    //UTM utmConverter_toutm;
-    //UTM utmConverter_fromutm;
 
-    struct Task: public DUNE::Tasks::Task
+    struct Arguments
     {
-      //! Constructor.
-      //! @param[in] name task name.
-      //! @param[in] ctx context.
       // Serial port device.
       std::string uart_dev;
       // Serial port baud rate.
-      int uart_baud;
+      unsigned uart_baud;
+    };
+
+    struct Task: public DUNE::Tasks::Task
+    {
+      //! Task arguments.
+      Arguments m_args;
 
       // Motor Entity ID's
       unsigned int id_port;
@@ -69,24 +69,15 @@ namespace KTH
       Task(const std::string& name, Tasks::Context& ctx):
         DUNE::Tasks::Task(name, ctx)
       {
-          param("Serial Port - Device", uart_dev)
-                  .defaultValue("")
-                  .description("Serial port device used to communicate with the sensor");
 
-          param("Serial Port - Baud Rate", uart_baud)
-                  .defaultValue("9600")
-                  .description("Serial port baud rate");
+        param("Serial Port - Device", m_args.uart_dev)
+                            .defaultValue("/dev/ttyUSB-1")
+                            .description("Serial port device (used to communicate with the actuator)");
 
-        isb = new SerialInterface();
-        isb->setup(uart_dev, uart_baud);
-        //isb->setCallback(&this->ISB_CALLBACK);
-        auto fp = std::bind(&Task::ISB_CALLBACK, this);
-        isb->setCallback(fp);
+        param("Serial Port - Baud Rate", m_args.uart_baud)
+        .defaultValue("9600")
+        .description("Serial port baud rate");
 
-        bind<SetThrusterActuation>(this);
-
-        id_port = reserveEntity("Port Motor");
-        id_starboard = reserveEntity("Starboard Motor");
       }
 
       //! Update internal state with new parameter values.
@@ -100,6 +91,8 @@ namespace KTH
       onEntityReservation(void)
       {
         resolveEntity(getEntityId());
+        id_port = reserveEntity("Port Motor");
+        id_starboard = reserveEntity("Starboard Motor");
       }
 
       //! Resolve entity names.
@@ -118,12 +111,20 @@ namespace KTH
       void
       onResourceInitialization(void)
       {
+        std::cout << "ISBinterface: Serial port: " << m_args.uart_dev << ", baud:" << m_args.uart_baud << std::endl;
+        isb = new SerialInterface();
+        isb->setup(m_args.uart_dev, m_args.uart_baud);
+        auto fp = std::bind(&Task::ISB_CALLBACK, this);
+        isb->setCallback(fp);
+
+        bind<SetThrusterActuation>(this);
       }
 
       //! Release resources.
       void
       onResourceRelease(void)
       {
+        //TODO close serial port
       }
 
       //! Main loop.
