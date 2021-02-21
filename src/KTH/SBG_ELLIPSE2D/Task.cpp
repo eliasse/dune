@@ -39,7 +39,7 @@
 #include "SBG_Ellipse.h"
 
 
-namespace Sensors
+namespace KTH
 {
 
   namespace SBG_ELLIPSE2D
