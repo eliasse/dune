@@ -169,7 +169,7 @@ namespace KTH
           } break;
 
           case ID_THRUSTER_PORT: {
-            std::cout << "Port thruster data received" << std::endl;
+            //std::cout << "Port thruster data received" << std::endl;
             float rpm       = isb->parse_float();
             //float current   = isb->parse_float();
             //float torque    = isb->parse_float();
@@ -182,7 +182,7 @@ namespace KTH
           } break;
 
           case ID_THRUSTER_STRB: {
-            std::cout << "Strb thruster data received" << std::endl;
+            //std::cout << "Strb thruster data received" << std::endl;
             float rpm       = isb->parse_float();
             //float current   = isb->parse_float();
             //float torque    = isb->parse_float();
@@ -195,7 +195,7 @@ namespace KTH
           } break;
 
           case ID_ECHOSOUNDER: {
-            std::cout << "Echosounder data received" << std::endl;
+            //std::cout << "Echosounder data received" << std::endl;
             float dbt                   = isb->parse_float();
             float offset                = isb->parse_float();
             float max_range_scale       = isb->parse_float();
