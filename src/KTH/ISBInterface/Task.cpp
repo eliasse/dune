@@ -235,13 +235,13 @@ namespace KTH
       {
         if(msg->id == 0) {
           isb->new_package(DI_SET_THRUSTER_PORT);
-          isb->add_float(msg->value); //between -1 and 1
+          isb->add_float(msg->value*100.0); //between -1 and 1
           isb->send_package();
           //std::cout << "Thruster port: " << msg->value << std::endl;
         }
         if(msg->id == 1) {
           isb->new_package(DI_SET_THRUSTER_STRB);
-          isb->add_float(msg->value); //between -1 and 1
+          isb->add_float(msg->value*100.0); //between -1 and 1
           isb->send_package();
           //std::cout << "Thruster strb: " << msg->value << std::endl;
         }
