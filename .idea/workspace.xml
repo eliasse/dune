@@ -75,10 +75,10 @@
       <config projectName="DUNE" targetName="dune-launcher" />
       <config projectName="DUNE" targetName="Simulators.Motor" />
       <config projectName="DUNE" targetName="Sensors.SADC" />
-      <config projectName="DUNE" targetName="Maneuver.Multiplexer" />
       <config projectName="DUNE" targetName="Transports.TCPOnDemand" />
-      <config projectName="DUNE" targetName="Simulators.IMU" />
+      <config projectName="DUNE" targetName="Maneuver.Multiplexer" />
       <config projectName="DUNE" targetName="NightlyConfigure" />
+      <config projectName="DUNE" targetName="Simulators.IMU" />
       <config projectName="DUNE" targetName="Navigation.General.GPSNavigation" />
       <config projectName="DUNE" targetName="dune-wgs84" />
       <config projectName="DUNE" targetName="ContinuousUpdate" />
@@ -91,8 +91,8 @@
       <config projectName="DUNE" targetName="Monitors.Entities" />
       <config projectName="DUNE" targetName="Power.PCTLv2" />
       <config projectName="DUNE" targetName="Simulators.LBL" />
-      <config projectName="DUNE" targetName="Actuators.LED4R" />
       <config projectName="DUNE" targetName="compass_calibration" />
+      <config projectName="DUNE" targetName="Actuators.LED4R" />
       <config projectName="DUNE" targetName="Transports.IridiumSBD" />
       <config projectName="DUNE" targetName="ContinuousTest" />
       <config projectName="DUNE" targetName="dune-gsmux" />
@@ -131,8 +131,8 @@
       <config projectName="DUNE" targetName="Sensors.ThermalZone" />
       <config projectName="DUNE" targetName="dune-gsmux-tsv" />
       <config projectName="DUNE" targetName="Transports.Serial" />
-      <config projectName="DUNE" targetName="Sensors.XchangeSV" />
       <config projectName="DUNE" targetName="Sensors.MLBLTracker" />
+      <config projectName="DUNE" targetName="Sensors.XchangeSV" />
       <config projectName="DUNE" targetName="Monitors.Clock" />
       <config projectName="DUNE" targetName="Autonomy.TextActions" />
       <config projectName="DUNE" targetName="ContinuousStart" />
@@ -164,10 +164,11 @@
       <config projectName="DUNE" targetName="ExperimentalBuild" />
       <config projectName="DUNE" targetName="Actuators.AMC" />
       <config projectName="DUNE" targetName="surface_positions" />
+      <config projectName="DUNE" targetName="Transports.UAN" />
       <config projectName="DUNE" targetName="Transports.TCP.Server" />
       <config projectName="DUNE" targetName="Transports.FTP" />
-      <config projectName="DUNE" targetName="Transports.UAN" />
       <config projectName="DUNE" targetName="Simulators.Target" />
+      <config projectName="DUNE" targetName="KTH.SBG_ELLIPSE2D" />
       <config projectName="DUNE" targetName="Simulators.CTD" />
       <config projectName="DUNE" targetName="Sensors.SW100" />
       <config projectName="DUNE" targetName="dune-version" />
@@ -184,8 +185,8 @@
       <config projectName="DUNE" targetName="Simulators.UAVAutopilot" />
       <config projectName="DUNE" targetName="Simulators.DVL" />
       <config projectName="DUNE" targetName="coarse_altitude" />
-      <config projectName="DUNE" targetName="Transports.LoggingDigest" />
       <config projectName="DUNE" targetName="Power.DOAMv2" />
+      <config projectName="DUNE" targetName="Transports.LoggingDigest" />
       <config projectName="DUNE" targetName="Actuators.MCD4R" />
       <config projectName="DUNE" targetName="Maneuver.CommsRelay" />
       <config projectName="DUNE" targetName="Sensors.MLBL" />
@@ -195,8 +196,8 @@
       <config projectName="DUNE" targetName="dune" />
       <config projectName="DUNE" targetName="Sensors.DMS" />
       <config projectName="DUNE" targetName="Actuators.SCRTv4" />
-      <config projectName="DUNE" targetName="Simulators.Iridium" />
       <config projectName="DUNE" targetName="Power.LUEMB" />
+      <config projectName="DUNE" targetName="Simulators.Iridium" />
       <config projectName="DUNE" targetName="Supervisors.Delegator" />
       <config projectName="DUNE" targetName="Actuators.SingleSIMCT01" />
       <config projectName="DUNE" targetName="Control.Path.VectorField" />
@@ -207,8 +208,8 @@
       <config projectName="DUNE" targetName="Control.AUV.RemoteOperation" />
       <config projectName="DUNE" targetName="Control.Path.LOSnSMC" />
       <config projectName="DUNE" targetName="Control.AUV.Allocator" />
-      <config projectName="DUNE" targetName="Supervisors.UAV.LostComms" />
       <config projectName="DUNE" targetName="Maneuver.Teleoperation" />
+      <config projectName="DUNE" targetName="Supervisors.UAV.LostComms" />
       <config projectName="DUNE" targetName="Sensors.Microstrain3DMGX1" />
       <config projectName="DUNE" targetName="Transports.Logging" />
       <config projectName="DUNE" targetName="Sensors.Microstrain3DMGX3" />
@@ -224,8 +225,8 @@
       <config projectName="DUNE" targetName="Power.BATMANv2" />
       <config projectName="DUNE" targetName="Transports.CommManager" />
       <config projectName="DUNE" targetName="Sensors.Imagenex881A" />
-      <config projectName="DUNE" targetName="NightlyStart" />
       <config projectName="DUNE" targetName="Simulators.GPS" />
+      <config projectName="DUNE" targetName="NightlyStart" />
       <config projectName="DUNE" targetName="Maneuver.FollowSystem" />
       <config projectName="DUNE" targetName="imc" />
       <config projectName="DUNE" targetName="Transports.Fragments" />
@@ -233,8 +234,8 @@
       <config projectName="DUNE" targetName="Actuators.PWM" />
       <config projectName="DUNE" targetName="Nightly" />
       <config projectName="DUNE" targetName="UserInterfaces.Buttons" />
-      <config projectName="DUNE" targetName="Vision.PhotoTrigger" />
       <config projectName="DUNE" targetName="energy_consumed" />
+      <config projectName="DUNE" targetName="Vision.PhotoTrigger" />
       <config projectName="DUNE" targetName="Transports.DataStore" />
       <config projectName="DUNE" targetName="Transports.TCP.Client" />
       <config projectName="DUNE" targetName="Sensors.Imagenex837B" />
@@ -265,8 +266,8 @@
       <config projectName="DUNE" targetName="Simulators.AcousticModem" />
       <config projectName="DUNE" targetName="Maneuver.CompassCalibration" />
       <config projectName="DUNE" targetName="Monitors.Servos" />
-      <config projectName="DUNE" targetName="Power.APD" />
       <config projectName="DUNE" targetName="Simulators.DepthSensor" />
+      <config projectName="DUNE" targetName="Power.APD" />
       <config projectName="DUNE" targetName="dune-activate" />
       <config projectName="DUNE" targetName="ContinuousSubmit" />
       <config projectName="DUNE" targetName="Sensors.Imagenex852" />
@@ -293,8 +294,8 @@
       <config projectName="DUNE" targetName="i18n_update" />
       <config projectName="DUNE" targetName="Monitors.Collisions" />
       <config projectName="DUNE" targetName="dune-lucl-talk" />
-      <config projectName="DUNE" targetName="Simulators.Gaussian" />
       <config projectName="DUNE" targetName="ExperimentalUpdate" />
+      <config projectName="DUNE" targetName="Simulators.Gaussian" />
       <config projectName="DUNE" targetName="Actuators.MicroCamD" />
       <config projectName="DUNE" targetName="Maneuver.FollowReference.UAV" />
       <config projectName="DUNE" targetName="ExperimentalStart" />
@@ -303,9 +304,9 @@
       <config projectName="DUNE" targetName="Transports.Discovery" />
       <config projectName="DUNE" targetName="Simulators.Docking" />
       <config projectName="DUNE" targetName="i18n_compile_pt_PT" />
+      <config projectName="DUNE" targetName="KTH.ISBInterface" />
       <config projectName="DUNE" targetName="Navigation.AUV.Ranger" />
       <config projectName="DUNE" targetName="Sensors.SonTekArgonaut" />
-      <config projectName="DUNE" targetName="KTH.ISBInterface" />
       <config projectName="DUNE" targetName="Plan.Engine" />
     </generated>
   </component>
@@ -316,7 +317,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b610db9c-52fa-4ef0-bf5d-13a64aea7667" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/KTH/ISBInterface/Task.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/KTH/ISBInterface/Task.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/KTH/GPSNavigation/Task.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/KTH/GPSNavigation/Task.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/etc/anka.ini" beforeDir="false" afterPath="$PROJECT_DIR$/etc/anka.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/etc/asv/transports.ini" beforeDir="false" afterPath="$PROJECT_DIR$/etc/asv/transports.ini" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -343,20 +348,16 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="cf.first.check.clang-format" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/etc/asv" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/KTH" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/KTH" />
       <recent name="$PROJECT_DIR$/etc/asv" />
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.dune">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Actuators.AMC" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -633,6 +634,11 @@
       </method>
     </configuration>
     <configuration name="KTH.ISBInterface" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="KTH.SBG_ELLIPSE2D" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -1644,6 +1650,7 @@
       <item itemvalue="CMake Application.KTH.CMPS10" />
       <item itemvalue="CMake Application.KTH.Fish" />
       <item itemvalue="CMake Application.KTH.ISBInterface" />
+      <item itemvalue="CMake Application.KTH.SBG_ELLIPSE2D" />
       <item itemvalue="CMake Application.KTH.TBR700" />
       <item itemvalue="CMake Application.Maneuver.CommsRelay" />
       <item itemvalue="CMake Application.Maneuver.CompassCalibration" />
@@ -1856,7 +1863,8 @@
       <workItem from="1611842668086" duration="1492000" />
       <workItem from="1611844301009" duration="14010000" />
       <workItem from="1613123399109" duration="663000" />
-      <workItem from="1613124253870" duration="8638000" />
+      <workItem from="1613124253870" duration="12076000" />
+      <workItem from="1614159225684" duration="10280000" />
     </task>
     <servers />
   </component>
@@ -1886,36 +1894,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="178" y="88" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1611844499485">
-      <screen x="0" y="0" width="1440" height="860" />
-    </state>
-    <state x="178" y="88" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.860@0.0.1440.860" timestamp="1611844499485" />
-    <state x="387" y="169" width="655" height="526" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1613123993567">
-      <screen x="0" y="0" width="1440" height="860" />
-    </state>
-    <state x="387" y="169" width="655" height="526" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1440.860@0.0.1440.860" timestamp="1613123993567" />
-    <state x="436" y="199" width="624" height="526" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/67.27.1373.873@67.27.1373.873" timestamp="1606656054020" />
-    <state x="503" y="188" width="426" height="490" key="FileChooserDialogImpl" timestamp="1611844460226">
-      <screen x="0" y="0" width="1440" height="860" />
-    </state>
-    <state x="503" y="188" width="426" height="490" key="FileChooserDialogImpl/0.0.1440.860@0.0.1440.860" timestamp="1611844460226" />
-    <state width="1327" height="218" key="GridCell.Tab.0.bottom" timestamp="1606655220266">
-      <screen x="67" y="27" width="1373" height="873" />
-    </state>
-    <state width="1327" height="218" key="GridCell.Tab.0.bottom/67.27.1373.873@67.27.1373.873" timestamp="1606655220266" />
-    <state width="1327" height="218" key="GridCell.Tab.0.center" timestamp="1606655220265">
-      <screen x="67" y="27" width="1373" height="873" />
-    </state>
-    <state width="1327" height="218" key="GridCell.Tab.0.center/67.27.1373.873@67.27.1373.873" timestamp="1606655220265" />
-    <state width="1327" height="218" key="GridCell.Tab.0.left" timestamp="1606655220265">
-      <screen x="67" y="27" width="1373" height="873" />
-    </state>
-    <state width="1327" height="218" key="GridCell.Tab.0.left/67.27.1373.873@67.27.1373.873" timestamp="1606655220265" />
-    <state width="1327" height="218" key="GridCell.Tab.0.right" timestamp="1606655220266">
-      <screen x="67" y="27" width="1373" height="873" />
-    </state>
-    <state width="1327" height="218" key="GridCell.Tab.0.right/67.27.1373.873@67.27.1373.873" timestamp="1606655220266" />
   </component>
 </project>
