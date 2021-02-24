@@ -191,6 +191,8 @@ namespace KTH
             void
             consume(const IMC::EulerAngles* msg)
             {
+                setEntityState(IMC::EntityState::ESTA_NORMAL, Status::CODE_ACTIVE)
+
                 if (msg->getSourceEntity() == m_true_heading_eid)
                 {
                     m_estate.phi = msg->phi;
