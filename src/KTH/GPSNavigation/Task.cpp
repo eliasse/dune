@@ -191,7 +191,8 @@ namespace KTH
             void
             consume(const IMC::EulerAngles* msg)
             {
-                setEntityState(IMC::EntityState::ESTA_NORMAL, Status::CODE_ACTIVE)
+                setEntityState(IMC::EntityState::ESTA_NORMAL, Status::CODE_ACTIVE);
+                m_time_without_gps.reset();
 
                 if (msg->getSourceEntity() == m_true_heading_eid)
                 {
