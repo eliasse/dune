@@ -317,7 +317,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b610db9c-52fa-4ef0-bf5d-13a64aea7667" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/KTH/ISBInterface/Task.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/KTH/ISBInterface/Task.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/etc/anka.ini" beforeDir="false" afterPath="$PROJECT_DIR$/etc/anka.ini" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1860,7 +1861,7 @@
       <workItem from="1611844301009" duration="14010000" />
       <workItem from="1613123399109" duration="663000" />
       <workItem from="1613124253870" duration="12076000" />
-      <workItem from="1614159225684" duration="10460000" />
+      <workItem from="1614159225684" duration="11071000" />
     </task>
     <servers />
   </component>
