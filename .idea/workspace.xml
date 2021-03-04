@@ -317,7 +317,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b610db9c-52fa-4ef0-bf5d-13a64aea7667" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/etc/asv/plans.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/etc/anka.ini" beforeDir="false" afterPath="$PROJECT_DIR$/etc/anka.ini" afterDir="false" />
     </list>
@@ -1864,7 +1863,7 @@
       <workItem from="1613124253870" duration="12076000" />
       <workItem from="1614159225684" duration="12216000" />
       <workItem from="1614177045269" duration="4097000" />
-      <workItem from="1614846417353" duration="2452000" />
+      <workItem from="1614846417353" duration="6884000" />
     </task>
     <servers />
   </component>
