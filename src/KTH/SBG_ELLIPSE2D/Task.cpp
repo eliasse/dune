@@ -188,12 +188,17 @@ namespace KTH
                 msg.lat = ahrs.GPSPos.lat;
                 msg.lon = ahrs.GPSPos.lon;
                 msg.satellites = ahrs.GPSPos.num_sat;
+                msg.cog = ahrs.GPSVel.cog;
+                msg.sog = sqrt(ahrs.GPSVel.vel_n*ahrs.GPSVel.vel_n  + ahrs.GPSVel.vel_e*ahrs.GPSVel.vel_e);
+
                 //TODO add the rest
+
                 msg.setSourceEntity(getEntityId());
                 dispatch(msg);
                 ahrs.GPSPos.lat = last_lat;
                 ahrs.GPSPos.lon = last_lon;
                 std::cout << "SBG: New gps position" << std::endl;
+                setEntityState(IMC::EntityState::ESTA_NORMAL, Status::CODE_ACTIVE);
               }
             }
             break;
