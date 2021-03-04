@@ -185,18 +185,18 @@ namespace KTH
             {
               if(ahrs.GPSPos.lat != last_lat || ahrs.GPSPos.lon != last_lon) {
                 IMC::GpsFix msg;
-                msg.lat = ahrs.GPSPos.lat;
-                msg.lon = ahrs.GPSPos.lon;
+                msg.lat = Angles::radians(ahrs.GPSPos.lat);
+                msg.lon = Angles::radians(ahrs.GPSPos.lon);
                 msg.satellites = ahrs.GPSPos.num_sat;
-                msg.cog = ahrs.GPSVel.cog;
+                msg.cog = Angles::radians(ahrs.GPSVel.cog);
                 msg.sog = sqrt(ahrs.GPSVel.vel_n*ahrs.GPSVel.vel_n  + ahrs.GPSVel.vel_e*ahrs.GPSVel.vel_e);
-
+                msg.validity = IMC::GpsFix::GFV_VALID_POS;
                 //TODO add the rest
 
                 msg.setSourceEntity(getEntityId());
                 dispatch(msg);
-                ahrs.GPSPos.lat = last_lat;
-                ahrs.GPSPos.lon = last_lon;
+                last_lat = ahrs.GPSPos.lat;
+                last_lon = ahrs.GPSPos.lon;
                 std::cout << "SBG: New gps position" << std::endl;
                 setEntityState(IMC::EntityState::ESTA_NORMAL, Status::CODE_ACTIVE);
               }
@@ -210,8 +210,8 @@ namespace KTH
                 msg.psi = ahrs.GPSHdt.true_heading;
                 msg.setSourceEntity(id_true_heading);
                 dispatch(msg);
-                ahrs.GPSHdt.gps_pitch = last_gps_pitch;
-                ahrs.GPSHdt.true_heading = last_true_heading;
+                last_gps_pitch = Angles::radians(ahrs.GPSHdt.gps_pitch);
+                last_true_heading = Angles::radians(ahrs.GPSHdt.true_heading);
                 std::cout << "SBG: New true heading" << std::endl;
               }
             }
