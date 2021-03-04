@@ -65,6 +65,10 @@ namespace KTH
       SBG_Ellipse ahrs;
       Stream* serialPort;
 
+      //variables to keep track of when new data is received
+      double last_lat, last_lon;
+      float last_true_heading, last_gps_pitch;
+
       Task(const std::string& name, Tasks::Context& ctx):
         Tasks::Task(name, ctx)
       {
@@ -179,24 +183,32 @@ namespace KTH
             break;
             case GPS_POS_DATA:
             {
-              IMC::GpsFix msg;
-              msg.lat = ahrs.GPSPos.lat;
-              msg.lon = ahrs.GPSPos.lon;
-              msg.satellites = ahrs.GPSPos.num_sat;
-              //TODO add the rest
-              msg.setSourceEntity(getEntityId());
-              dispatch(msg);
-
-
+              if(ahrs.GPSPos.lat != last_lat || ahrs.GPSPos.lon != last_lon) {
+                IMC::GpsFix msg;
+                msg.lat = ahrs.GPSPos.lat;
+                msg.lon = ahrs.GPSPos.lon;
+                msg.satellites = ahrs.GPSPos.num_sat;
+                //TODO add the rest
+                msg.setSourceEntity(getEntityId());
+                dispatch(msg);
+                ahrs.GPSPos.lat = last_lat;
+                ahrs.GPSPos.lon = last_lon;
+                std::cout << "SBG: New gps position" << std::endl;
+              }
             }
             break;
             case GPS_TRUE_HEADING_DATA:
             {
-              IMC::EulerAngles msg;
-              msg.theta = ahrs.GPSHdt.gps_pitch;
-              msg.psi = ahrs.GPSHdt.true_heading;
-              msg.setSourceEntity(id_true_heading);
-              dispatch(msg);
+              if(ahrs.GPSHdt.gps_pitch != last_gps_pitch || ahrs.GPSHdt.true_heading != last_true_heading) {
+                IMC::EulerAngles msg;
+                msg.theta = ahrs.GPSHdt.gps_pitch;
+                msg.psi = ahrs.GPSHdt.true_heading;
+                msg.setSourceEntity(id_true_heading);
+                dispatch(msg);
+                ahrs.GPSHdt.gps_pitch = last_gps_pitch;
+                ahrs.GPSHdt.true_heading = last_true_heading;
+                std::cout << "SBG: New true heading" << std::endl;
+              }
             }
             break;
           }
