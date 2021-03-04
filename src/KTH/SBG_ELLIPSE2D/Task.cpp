@@ -57,6 +57,7 @@ namespace KTH
     };
 
     unsigned int id_true_heading;
+    unsigned int id_imu;
 
     struct Task: public Tasks::Task
     {
@@ -89,6 +90,7 @@ namespace KTH
       {
         resolveEntity(getEntityId());
         id_true_heading = reserveEntity("SBG ELLIPSE TRUE HEADING");
+        id_imu = reserveEntity("SBG ELLIPSE IMU");
       }
 
       void
@@ -130,14 +132,14 @@ namespace KTH
               msg_gyro.x = ahrs.imu.gyro_x;
               msg_gyro.y = ahrs.imu.gyro_y;
               msg_gyro.z = ahrs.imu.gyro_z;
-              msg_gyro.setSourceEntity(getEntityId());
+              msg_gyro.setSourceEntity(id_imu);
               dispatch(msg_gyro);
 
               IMC::Acceleration msg_acc;
               msg_acc.x = ahrs.imu.accel_x;
               msg_acc.y = ahrs.imu.accel_y;
               msg_acc.z = ahrs.imu.accel_z;
-              msg_acc.setSourceEntity(getEntityId());
+              msg_acc.setSourceEntity(id_imu);
               dispatch(msg_acc);
             }
             break;
@@ -147,7 +149,7 @@ namespace KTH
               msg.x = ahrs.mag.mx;
               msg.y = ahrs.mag.my;
               msg.z = ahrs.mag.mz;
-              msg.setSourceEntity(getEntityId());
+              msg.setSourceEntity(id_imu);
               dispatch(msg);
             }
             break;
@@ -157,7 +159,7 @@ namespace KTH
               msg.phi = ahrs.euler.roll;
               msg.theta = ahrs.euler.pitch;
               msg.psi = ahrs.euler.yaw;
-              msg.setSourceEntity(getEntityId());
+              msg.setSourceEntity(id_imu);
               dispatch(msg);
             }
             break;
