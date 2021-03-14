@@ -54,6 +54,8 @@ namespace KTH
             std::string elabel_true_heading;
             //! Convert height to geoid height (MSL)
             bool convert_msl;
+            //! Compass offset
+            float compass_offset;
         };
 
         struct Task: public DUNE::Tasks::Task
@@ -101,6 +103,10 @@ namespace KTH
                         .defaultValue("false")
                         .description("Convert WGS84 height to geoid height (mean sea level) height");
 
+                param("Compass Offset", m_args.compass_offset)
+                        .defaultValue("0.0")
+                        .description("Compass offset (degrees)");
+
                 m_estate.clear();
                 m_offset = 0.0f;
                 m_offset_flag = false;
@@ -118,10 +124,14 @@ namespace KTH
             void
             onUpdateParameters(void)
             {
+
                 if (!m_args.convert_msl)
                 {
                     m_offset = 0.0f;
                     m_offset_flag = false;
+                }
+                if (paramChanged(m_args.compass_offset)) {
+                    m_args.compass_offset = Angles::radians(m_args.compass_offset);
                 }
             }
 
@@ -211,7 +221,7 @@ namespace KTH
                 }
 
                 if (msg->getSourceEntity() == m_yaw_eid)
-                    m_estate.psi = msg->psi;
+                    m_estate.psi = unwrap2Pi(msg->psi + m_args.compass_offset);
             }
 
             void
@@ -259,6 +269,12 @@ namespace KTH
                     m_estate.psi = msg->cog;
 
                 dispatch(m_estate);
+            }
+
+            float unwrap2Pi(float x) {
+                while (x < 0.0) { x = x + 2*pi; }
+                while (x > 2.0*pi) { x = x - 2.0*pi; }
+                return x;
             }
 
             void
