@@ -272,8 +272,8 @@ namespace KTH
             }
 
             float unwrap2Pi(float x) {
-                while (x < 0.0) { x = x + 2*pi; }
-                while (x > 2.0*pi) { x = x - 2.0*pi; }
+                while (x < 0.0) { x = x + 2*3.1415; }
+                while (x > 2.0*3.1415) { x = x - 2.0*3.1415; }
                 return x;
             }
 

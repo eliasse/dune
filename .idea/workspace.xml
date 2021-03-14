@@ -208,8 +208,8 @@
       <config projectName="DUNE" targetName="Control.AUV.RemoteOperation" />
       <config projectName="DUNE" targetName="Control.Path.LOSnSMC" />
       <config projectName="DUNE" targetName="Control.AUV.Allocator" />
-      <config projectName="DUNE" targetName="Maneuver.Teleoperation" />
       <config projectName="DUNE" targetName="Supervisors.UAV.LostComms" />
+      <config projectName="DUNE" targetName="Maneuver.Teleoperation" />
       <config projectName="DUNE" targetName="Sensors.Microstrain3DMGX1" />
       <config projectName="DUNE" targetName="Transports.Logging" />
       <config projectName="DUNE" targetName="Sensors.Microstrain3DMGX3" />
@@ -233,6 +233,7 @@
       <config projectName="DUNE" targetName="dune-md5" />
       <config projectName="DUNE" targetName="Actuators.PWM" />
       <config projectName="DUNE" targetName="Nightly" />
+      <config projectName="DUNE" targetName="KTH.GPSNavigation" />
       <config projectName="DUNE" targetName="UserInterfaces.Buttons" />
       <config projectName="DUNE" targetName="energy_consumed" />
       <config projectName="DUNE" targetName="Vision.PhotoTrigger" />
@@ -317,8 +318,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b610db9c-52fa-4ef0-bf5d-13a64aea7667" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/etc/anka.en_US.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/etc/anka.ini" beforeDir="false" afterPath="$PROJECT_DIR$/etc/anka.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/KTH/GPSNavigation/Task.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/KTH/GPSNavigation/Task.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -356,6 +357,11 @@
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.dune">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Actuators.AMC" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -627,6 +633,11 @@
       </method>
     </configuration>
     <configuration name="KTH.Fish" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="KTH.GPSNavigation" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" EXPLICIT_BUILD_TARGET_NAME="all">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -1647,6 +1658,7 @@
       <item itemvalue="CMake Application.KTH.Ardupilot" />
       <item itemvalue="CMake Application.KTH.CMPS10" />
       <item itemvalue="CMake Application.KTH.Fish" />
+      <item itemvalue="CMake Application.KTH.GPSNavigation" />
       <item itemvalue="CMake Application.KTH.ISBInterface" />
       <item itemvalue="CMake Application.KTH.SBG_ELLIPSE2D" />
       <item itemvalue="CMake Application.KTH.TBR700" />
@@ -1865,7 +1877,7 @@
       <workItem from="1614159225684" duration="12216000" />
       <workItem from="1614177045269" duration="4097000" />
       <workItem from="1614846417353" duration="16849000" />
-      <workItem from="1615718201625" duration="8734000" />
+      <workItem from="1615718201625" duration="10592000" />
     </task>
     <servers />
   </component>
