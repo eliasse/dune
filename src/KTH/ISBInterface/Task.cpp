@@ -55,6 +55,9 @@ namespace KTH
       std::string uart_dev;
       // Serial port baud rate.
       unsigned uart_baud;
+
+      float MAX_RPM;
+      float ACCELERATION;
     };
 
     struct Task: public DUNE::Tasks::Task
@@ -77,6 +80,9 @@ namespace KTH
         param("Serial Port - Baud Rate", m_args.uart_baud)
         .defaultValue("9600")
         .description("Serial port baud rate");
+
+        param("MAX RPM ", m_args.MAX_RPM). defaultValue("100");
+        param("MOTOR ACCELERATION ", m_args.ACCELERATION).defaultValue("500");
 
       }
 
@@ -235,13 +241,13 @@ namespace KTH
       {
         if(msg->id == 0) {
           isb->new_package(DI_SET_THRUSTER_PORT);
-          isb->add_float(msg->value*100.0); //between -1 and 1
+          isb->add_float(msg->value*m_args.MAX_RPM); //msg->value is between -1 and 1
           isb->send_package();
           //std::cout << "Thruster port: " << msg->value << std::endl;
         }
         if(msg->id == 1) {
           isb->new_package(DI_SET_THRUSTER_STRB);
-          isb->add_float(msg->value*100.0); //between -1 and 1
+          isb->add_float(msg->value*m_args.MAX_RPM); //msg->value is between -1 and 1
           isb->send_package();
           //std::cout << "Thruster strb: " << msg->value << std::endl;
         }

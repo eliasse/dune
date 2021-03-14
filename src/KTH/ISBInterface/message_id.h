@@ -18,5 +18,6 @@
 #define DI_HEARTBEAT           101
 #define DI_SET_THRUSTER_PORT   120
 #define DI_SET_THRUSTER_STRB   121
+#define DI_SET_ACCELERATION    122
 
 #endif

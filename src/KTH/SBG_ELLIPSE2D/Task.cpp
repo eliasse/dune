@@ -54,6 +54,8 @@ namespace KTH
       std::string uart_dev;
       // Serial port baud rate.
       unsigned uart_baud;
+
+      bool verbose;
     };
 
     unsigned int id_true_heading;
@@ -80,6 +82,8 @@ namespace KTH
         param("Serial Port - Baud Rate", m_args.uart_baud)
         .defaultValue("9600")
         .description("Serial port baud rate");
+
+        param("verbose", m_args.verbose).defaultValue("false");
 
 
       }
@@ -123,7 +127,7 @@ namespace KTH
           switch (sbg_data_type) {
             case UTC_TIME_DATA:
             {
-
+              if(m_args.verbose) std::cout << "SBG: new time data" << std::endl;
             }
             break;
             case IMU_DATA:
@@ -199,7 +203,7 @@ namespace KTH
                 dispatch(msg);
                 last_lat = ahrs.GPSPos.lat;
                 last_lon = ahrs.GPSPos.lon;
-                std::cout << "SBG: New gps position" << std::endl;
+                if(m_args.verbose) std::cout << "SBG: New gps position" << std::endl;
                 setEntityState(IMC::EntityState::ESTA_NORMAL, Status::CODE_ACTIVE);
               }
             }
@@ -214,7 +218,7 @@ namespace KTH
                 dispatch(msg);
                 last_gps_pitch = Angles::radians(ahrs.GPSHdt.gps_pitch);
                 last_true_heading = Angles::radians(ahrs.GPSHdt.true_heading);
-                std::cout << "SBG: New true heading" << std::endl;
+                if(m_args.verbose) std::cout << "SBG: New true heading" << std::endl;
               }
             }
             break;
