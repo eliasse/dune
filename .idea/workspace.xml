@@ -318,9 +318,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b610db9c-52fa-4ef0-bf5d-13a64aea7667" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/etc/anka.en_US.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/KTH/GPSNavigation/Task.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/KTH/GPSNavigation/Task.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1877,7 +1875,7 @@
       <workItem from="1614159225684" duration="12216000" />
       <workItem from="1614177045269" duration="4097000" />
       <workItem from="1614846417353" duration="16849000" />
-      <workItem from="1615718201625" duration="10592000" />
+      <workItem from="1615718201625" duration="12745000" />
     </task>
     <servers />
   </component>
